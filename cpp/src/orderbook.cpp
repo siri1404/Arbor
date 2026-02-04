@@ -1,327 +1,529 @@
 #include "orderbook.hpp"
-#include <algorithm>
 #include <stdexcept>
 
 namespace arbor::orderbook {
 
-LimitOrderBook::LimitOrderBook(std::string_view symbol, uint32_t tick_size)
-    : symbol_(symbol), tick_size_(tick_size),
-      order_pool_(std::make_unique<std::array<Order, MAX_ORDERS>>()) {
-    // Pre-allocate to avoid reallocation during trading
-    bid_prices_.reserve(1000);
-    ask_prices_.reserve(1000);
-    trades_.reserve(10000);
-    orders_.reserve(10000);
+// =============================================================================
+// CONSTRUCTOR
+// =============================================================================
+
+LimitOrderBook::LimitOrderBook(const std::string& symbol, uint32_t tick_size)
+    : symbol_(symbol)
+    , tick_size_(tick_size)
+    , order_allocator_()
+    , level_allocator_()
+{
+    // All memory pre-allocated in constructors
+    // Ready for zero-allocation trading
 }
 
-Order* LimitOrderBook::allocate_order() {
-    if (next_order_slot_ >= MAX_ORDERS) {
-        throw std::runtime_error("Order pool exhausted");
-    }
-    return &(*order_pool_)[next_order_slot_++];
-}
+// =============================================================================
+// ADD ORDER
+// =============================================================================
 
-uint64_t LimitOrderBook::add_order(Side side, OrderType type, uint64_t price_ticks, 
-                                    uint32_t quantity, std::vector<Trade>& trades_out) {
-    // START CRITICAL SECTION - MINIMIZE LATENCY
-    const auto start_time = std::chrono::steady_clock::now();
+uint64_t LimitOrderBook::add_order(
+    Side side,
+    OrderType type,
+    uint64_t price_ticks,
+    uint32_t quantity,
+    TimeInForce tif,
+    uint64_t client_order_id,
+    std::vector<Trade>* trades_out
+) {
+    // -------------------------------------------------------------------------
+    // CRITICAL PATH START - Every nanosecond counts
+    // -------------------------------------------------------------------------
+    const Timestamp entry_time = std::chrono::steady_clock::now();
     
-    // Allocate from pool - O(1)
-    Order* order = allocate_order();
-    order->order_id = next_order_id_++;
+    // Validate inputs
+    if (quantity == 0) {
+        return 0;  // Rejected
+    }
+    
+    // Allocate from pool - O(1), no malloc
+    Order* order = order_allocator_.allocate();
+    if (!order) {
+        return 0;  // Pool exhausted
+    }
+    
+    // Initialize order
+    const uint64_t order_id = next_order_id_.fetch_add(1, std::memory_order_relaxed);
+    
+    order->order_id = order_id;
+    order->client_order_id = client_order_id ? client_order_id : order_id;
     order->price_ticks = price_ticks;
     order->quantity = quantity;
     order->filled_quantity = 0;
+    order->visible_quantity = quantity;  // Full visibility by default
+    order->hidden_quantity = 0;
     order->side = side;
     order->type = type;
     order->status = OrderStatus::NEW;
-    order->timestamp = start_time;
+    order->tif = tif;
+    order->entry_time = entry_time;
+    order->last_update_time = entry_time;
+    order->price_level = nullptr;
+    order->list_node.prev = nullptr;
+    order->list_node.next = nullptr;
     
-    orders_[order->order_id] = order;
+    // Add to order map for O(1) lookup
+    order_map_.insert(order_id, order);
     
-    // Attempt matching - this is the HOT PATH
-    match_order(order, trades_out);
+    // -------------------------------------------------------------------------
+    // MATCHING ENGINE - Hot path
+    // -------------------------------------------------------------------------
     
-    // If limit order with remaining quantity, add to book
-    if (type == OrderType::LIMIT && order->remaining_qty() > 0) {
-        auto& book = (side == Side::BUY) ? bids_ : asks_;
-        
-        if (book.find(price_ticks) == book.end()) {
-            insert_price_level(side, price_ticks);
+    // Attempt matching for marketable orders
+    if (type == OrderType::MARKET || type == OrderType::IOC || type == OrderType::FOK) {
+        // Market orders must be fully matched or killed
+        if (type == OrderType::FOK) {
+            // Check if FOK can be fully filled before matching
+            uint32_t available = 0;
+            if (side == Side::BUY) {
+                for (auto& level : asks_) {
+                    if (price_ticks >= level.price_ticks || type == OrderType::MARKET) {
+                        available += level.total_quantity;
+                        if (available >= quantity) break;
+                    } else {
+                        break;
+                    }
+                }
+            } else {
+                for (auto& level : bids_) {
+                    if (price_ticks <= level.price_ticks || type == OrderType::MARKET) {
+                        available += level.total_quantity;
+                        if (available >= quantity) break;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            
+            if (available < quantity) {
+                // Cannot fill FOK, reject
+                order->status = OrderStatus::REJECTED;
+                order_map_.remove(order_id);
+                order_allocator_.deallocate(order);
+                return 0;
+            }
         }
         
-        book[price_ticks].add_order(order);
-    }
-    
-    // Record latency
-    const int64_t latency_ns = elapsed_ns(start_time).count();
-    latency_stats_.record(latency_ns);
-    
-    return order->order_id;
-}
-
-void LimitOrderBook::match_order(Order* order, std::vector<Trade>& trades_out) {
-    if (order->side == Side::BUY) {
-        match_aggressive_buy(order, trades_out);
+        match_order(order, trades_out);
+        
+        // Handle remaining quantity based on order type
+        if (order->remaining_qty() > 0) {
+            if (type == OrderType::MARKET || type == OrderType::IOC) {
+                // Cancel remaining
+                order->status = OrderStatus::CANCELLED;
+            }
+        }
     } else {
-        match_aggressive_sell(order, trades_out);
+        // Limit order - match then rest
+        match_order(order, trades_out);
+    }
+    
+    // -------------------------------------------------------------------------
+    // REST ON BOOK (for limit orders with remaining quantity)
+    // -------------------------------------------------------------------------
+    
+    if (type == OrderType::LIMIT && order->remaining_qty() > 0 && 
+        order->status != OrderStatus::CANCELLED) {
+        
+        // Get or create price level - O(log P)
+        PriceLevel* level = get_or_create_level(side, price_ticks);
+        
+        // Add to level - O(1)
+        level->add_order(order);
+        
+        if (order->filled_quantity > 0) {
+            order->status = OrderStatus::PARTIAL;
+        }
+    } else if (order->remaining_qty() == 0) {
+        order->status = OrderStatus::FILLED;
+    }
+    
+    // -------------------------------------------------------------------------
+    // RECORD LATENCY
+    // -------------------------------------------------------------------------
+    
+    const int64_t latency = elapsed_ns(entry_time);
+    latency_stats_.record(latency);
+    
+    // Callback
+    if (order_callback_) {
+        order_callback_(*order);
+    }
+    
+    return order_id;
+}
+
+// =============================================================================
+// CANCEL ORDER
+// =============================================================================
+
+bool LimitOrderBook::cancel_order(uint64_t order_id) {
+    // O(1) lookup
+    Order* order = order_map_.find(order_id);
+    if (!order) {
+        return false;
+    }
+    
+    if (order->status == OrderStatus::FILLED || 
+        order->status == OrderStatus::CANCELLED) {
+        return false;
+    }
+    
+    // Remove from price level - O(1) via intrusive list
+    if (order->price_level) {
+        PriceLevel* level = order->price_level;
+        level->remove_order(order);
+        
+        // Remove empty price level - O(log P)
+        remove_level_if_empty(level);
+    }
+    
+    order->status = OrderStatus::CANCELLED;
+    order->last_update_time = std::chrono::steady_clock::now();
+    
+    if (order_callback_) {
+        order_callback_(*order);
+    }
+    
+    return true;
+}
+
+// =============================================================================
+// MODIFY ORDER (Cancel/Replace)
+// =============================================================================
+
+uint64_t LimitOrderBook::modify_order(
+    uint64_t order_id,
+    uint64_t new_price_ticks,
+    uint32_t new_quantity,
+    std::vector<Trade>* trades_out
+) {
+    Order* old_order = order_map_.find(order_id);
+    if (!old_order) {
+        return 0;
+    }
+    
+    if (old_order->status == OrderStatus::FILLED ||
+        old_order->status == OrderStatus::CANCELLED) {
+        return 0;
+    }
+    
+    // Quantity can only be reduced without losing priority
+    bool loses_priority = (new_price_ticks != old_order->price_ticks) ||
+                          (new_quantity > old_order->remaining_qty());
+    
+    if (!loses_priority && new_quantity <= old_order->remaining_qty()) {
+        // In-place modification - keep time priority
+        if (old_order->price_level) {
+            old_order->price_level->total_quantity -= old_order->remaining_qty();
+            old_order->quantity = old_order->filled_quantity + new_quantity;
+            old_order->price_level->total_quantity += old_order->remaining_qty();
+        }
+        old_order->last_update_time = std::chrono::steady_clock::now();
+        
+        if (order_callback_) {
+            order_callback_(*old_order);
+        }
+        return order_id;
+    }
+    
+    // Cancel and replace - loses time priority
+    Side side = old_order->side;
+    OrderType type = old_order->type;
+    TimeInForce tif = old_order->tif;
+    uint64_t client_id = old_order->client_order_id;
+    
+    cancel_order(order_id);
+    
+    return add_order(side, type, new_price_ticks, new_quantity, tif, client_id, trades_out);
+}
+
+// =============================================================================
+// MATCHING ENGINE
+// =============================================================================
+
+void LimitOrderBook::match_order(Order* order, std::vector<Trade>* trades_out) {
+    if (order->side == Side::BUY) {
+        match_aggressive<Side::BUY>(order, trades_out);
+    } else {
+        match_aggressive<Side::SELL>(order, trades_out);
     }
 }
 
-void LimitOrderBook::match_aggressive_buy(Order* order, std::vector<Trade>& trades_out) {
-    // Buy order matches against asks (lowest price first)
-    while (order->remaining_qty() > 0 && !ask_prices_.empty()) {
-        const uint64_t best_ask_price = ask_prices_.front();
+template<Side AggSide>
+void LimitOrderBook::match_aggressive(Order* aggressor, std::vector<Trade>* trades_out) {
+    // Select opposite side book
+    auto& passive_book = []() -> auto& {
+        if constexpr (AggSide == Side::BUY) {
+            return asks_;
+        } else {
+            return bids_;
+        }
+    }();
+    
+    while (aggressor->remaining_qty() > 0) {
+        PriceLevel* best_level = passive_book.best();
+        if (!best_level) {
+            break;  // No liquidity
+        }
         
         // Price check for limit orders
-        if (order->type == OrderType::LIMIT && best_ask_price > order->price_ticks) {
-            break;
+        if (aggressor->type == OrderType::LIMIT) {
+            if constexpr (AggSide == Side::BUY) {
+                if (best_level->price_ticks > aggressor->price_ticks) {
+                    break;  // Ask price too high
+                }
+            } else {
+                if (best_level->price_ticks < aggressor->price_ticks) {
+                    break;  // Bid price too low
+                }
+            }
         }
         
-        PriceLevel& level = asks_[best_ask_price];
-        
         // Match against all orders at this price level (FIFO)
-        while (!level.orders.empty() && order->remaining_qty() > 0) {
-            Order* passive_order = level.orders.front();
+        while (aggressor->remaining_qty() > 0 && !best_level->empty()) {
+            Order* passive = best_level->orders.front();
             
             // Calculate fill quantity
-            const uint32_t fill_qty = std::min(order->remaining_qty(), 
-                                               passive_order->remaining_qty());
+            uint32_t fill_qty = std::min(aggressor->remaining_qty(), passive->remaining_qty());
             
-            // Update quantities
-            order->filled_quantity += fill_qty;
-            passive_order->filled_quantity += fill_qty;
-            level.total_quantity -= fill_qty;
+            // Execute trade
+            execute_trade(aggressor, passive, fill_qty, best_level->price_ticks, trades_out);
             
-            // Create trade record
-            Trade trade{
-                .trade_id = next_trade_id_++,
-                .buy_order_id = order->order_id,
-                .sell_order_id = passive_order->order_id,
-                .price_ticks = best_ask_price,
-                .quantity = fill_qty,
-                .timestamp = std::chrono::steady_clock::now(),
-                .latency_ns = elapsed_ns(order->timestamp).count()
-            };
-            
-            trades_out.push_back(trade);
-            trades_.push_back(trade);
-            
-            // Update order statuses
-            if (passive_order->remaining_qty() == 0) {
-                passive_order->status = OrderStatus::FILLED;
-                level.remove_front();
+            // Update passive order
+            if (passive->remaining_qty() == 0) {
+                passive->status = OrderStatus::FILLED;
+                best_level->remove_order(passive);
+                
+                if (order_callback_) {
+                    order_callback_(*passive);
+                }
             } else {
-                passive_order->status = OrderStatus::PARTIAL;
+                passive->status = OrderStatus::PARTIAL;
             }
         }
         
         // Remove empty price level
-        if (level.empty()) {
-            remove_price_level(Side::SELL, best_ask_price);
+        if (best_level->empty()) {
+            remove_level_if_empty(best_level);
         }
     }
     
-    // Update aggressor order status
-    if (order->remaining_qty() == 0) {
-        order->status = OrderStatus::FILLED;
-    } else if (order->filled_quantity > 0) {
-        order->status = OrderStatus::PARTIAL;
+    // Update aggressor status
+    if (aggressor->remaining_qty() == 0) {
+        aggressor->status = OrderStatus::FILLED;
+    } else if (aggressor->filled_quantity > 0) {
+        aggressor->status = OrderStatus::PARTIAL;
     }
 }
 
-void LimitOrderBook::match_aggressive_sell(Order* order, std::vector<Trade>& trades_out) {
-    // Sell order matches against bids (highest price first)
-    while (order->remaining_qty() > 0 && !bid_prices_.empty()) {
-        const uint64_t best_bid_price = bid_prices_.front();
-        
-        if (order->type == OrderType::LIMIT && best_bid_price < order->price_ticks) {
-            break;
-        }
-        
-        PriceLevel& level = bids_[best_bid_price];
-        
-        while (!level.orders.empty() && order->remaining_qty() > 0) {
-            Order* passive_order = level.orders.front();
-            
-            const uint32_t fill_qty = std::min(order->remaining_qty(), 
-                                               passive_order->remaining_qty());
-            
-            order->filled_quantity += fill_qty;
-            passive_order->filled_quantity += fill_qty;
-            level.total_quantity -= fill_qty;
-            
-            Trade trade{
-                .trade_id = next_trade_id_++,
-                .buy_order_id = passive_order->order_id,
-                .sell_order_id = order->order_id,
-                .price_ticks = best_bid_price,
-                .quantity = fill_qty,
-                .timestamp = std::chrono::steady_clock::now(),
-                .latency_ns = elapsed_ns(order->timestamp).count()
-            };
-            
-            trades_out.push_back(trade);
-            trades_.push_back(trade);
-            
-            if (passive_order->remaining_qty() == 0) {
-                passive_order->status = OrderStatus::FILLED;
-                level.remove_front();
-            } else {
-                passive_order->status = OrderStatus::PARTIAL;
+// Explicit instantiations
+template void LimitOrderBook::match_aggressive<Side::BUY>(Order*, std::vector<Trade>*);
+template void LimitOrderBook::match_aggressive<Side::SELL>(Order*, std::vector<Trade>*);
+
+void LimitOrderBook::execute_trade(
+    Order* aggressive,
+    Order* passive,
+    uint32_t fill_qty,
+    uint64_t price,
+    std::vector<Trade>* trades_out
+) {
+    // Update quantities
+    aggressive->filled_quantity += fill_qty;
+    passive->filled_quantity += fill_qty;
+    aggressive->last_update_time = std::chrono::steady_clock::now();
+    passive->last_update_time = aggressive->last_update_time;
+    
+    // Update price level aggregates
+    if (passive->price_level) {
+        uint32_t visible_fill = std::min(fill_qty, passive->displayable_qty());
+        passive->price_level->update_quantity_after_fill(fill_qty, visible_fill);
+    }
+    
+    // Create trade record
+    Trade trade{
+        .trade_id = next_trade_id_.fetch_add(1, std::memory_order_relaxed),
+        .buy_order_id = aggressive->is_buy() ? aggressive->order_id : passive->order_id,
+        .sell_order_id = aggressive->is_sell() ? aggressive->order_id : passive->order_id,
+        .price_ticks = price,
+        .quantity = fill_qty,
+        .aggressor_side = aggressive->side,
+        .timestamp = aggressive->last_update_time,
+        .latency_ns = elapsed_ns(aggressive->entry_time)
+    };
+    
+    ++trade_count_;
+    
+    if (trades_out) {
+        trades_out->push_back(trade);
+    }
+    
+    if (trade_callback_) {
+        trade_callback_(trade);
+    }
+}
+
+// =============================================================================
+// PRICE LEVEL MANAGEMENT
+// =============================================================================
+
+PriceLevel* LimitOrderBook::get_or_create_level(Side side, uint64_t price) {
+    // First, try to find existing level - O(log P)
+    PriceLevel* level = nullptr;
+    
+    if (side == Side::BUY) {
+        level = bids_.find(price);
+        if (!level) {
+            level = level_allocator_.allocate();
+            if (level) {
+                level->price_ticks = price;
+                level->side = side;
+                level->total_quantity = 0;
+                level->visible_quantity = 0;
+                level->order_count = 0;
+                level->forward.fill(nullptr);
+                level->level = 0;
+                bids_.insert(level);
             }
         }
-        
-        if (level.empty()) {
-            remove_price_level(Side::BUY, best_bid_price);
-        }
-    }
-    
-    if (order->remaining_qty() == 0) {
-        order->status = OrderStatus::FILLED;
-    } else if (order->filled_quantity > 0) {
-        order->status = OrderStatus::PARTIAL;
-    }
-}
-
-void LimitOrderBook::insert_price_level(Side side, uint64_t price) {
-    if (side == Side::BUY) {
-        // Binary search insertion for descending order
-        auto it = std::lower_bound(bid_prices_.begin(), bid_prices_.end(), price,
-                                   std::greater<uint64_t>());
-        bid_prices_.insert(it, price);
     } else {
-        // Binary search insertion for ascending order
-        auto it = std::lower_bound(ask_prices_.begin(), ask_prices_.end(), price);
-        ask_prices_.insert(it, price);
-    }
-}
-
-void LimitOrderBook::remove_price_level(Side side, uint64_t price) {
-    if (side == Side::BUY) {
-        bids_.erase(price);
-        auto it = std::find(bid_prices_.begin(), bid_prices_.end(), price);
-        if (it != bid_prices_.end()) {
-            bid_prices_.erase(it);
-        }
-    } else {
-        asks_.erase(price);
-        auto it = std::find(ask_prices_.begin(), ask_prices_.end(), price);
-        if (it != ask_prices_.end()) {
-            ask_prices_.erase(it);
-        }
-    }
-}
-
-bool LimitOrderBook::cancel_order(uint64_t order_id) {
-    auto it = orders_.find(order_id);
-    if (it == orders_.end()) return false;
-    
-    Order* order = it->second;
-    if (order->status == OrderStatus::FILLED) return false;
-    
-    // Remove from price level if still in book
-    if (order->remaining_qty() > 0) {
-        auto& book = (order->side == Side::BUY) ? bids_ : asks_;
-        auto level_it = book.find(order->price_ticks);
-        
-        if (level_it != book.end()) {
-            PriceLevel& level = level_it->second;
-            auto& orders_vec = level.orders;
-            
-            orders_vec.erase(
-                std::remove(orders_vec.begin(), orders_vec.end(), order),
-                orders_vec.end()
-            );
-            
-            level.total_quantity -= order->remaining_qty();
-            
-            if (level.empty()) {
-                remove_price_level(order->side, order->price_ticks);
+        level = asks_.find(price);
+        if (!level) {
+            level = level_allocator_.allocate();
+            if (level) {
+                level->price_ticks = price;
+                level->side = side;
+                level->total_quantity = 0;
+                level->visible_quantity = 0;
+                level->order_count = 0;
+                level->forward.fill(nullptr);
+                level->level = 0;
+                asks_.insert(level);
             }
         }
     }
     
-    order->status = OrderStatus::CANCELLED;
-    return true;
+    return level;
 }
+
+void LimitOrderBook::remove_level_if_empty(PriceLevel* level) {
+    if (!level || !level->empty()) {
+        return;
+    }
+    
+    if (level->side == Side::BUY) {
+        bids_.remove(level);
+    } else {
+        asks_.remove(level);
+    }
+    
+    level_allocator_.deallocate(level);
+}
+
+// =============================================================================
+// MARKET DATA QUERIES
+// =============================================================================
 
 uint64_t LimitOrderBook::best_bid() const noexcept {
-    return bid_prices_.empty() ? 0 : bid_prices_.front();
+    PriceLevel* best = bids_.best();
+    return best ? best->price_ticks : 0;
 }
 
 uint64_t LimitOrderBook::best_ask() const noexcept {
-    return ask_prices_.empty() ? UINT64_MAX : ask_prices_.front();
+    PriceLevel* best = asks_.best();
+    return best ? best->price_ticks : std::numeric_limits<uint64_t>::max();
 }
 
-const std::vector<PriceLevel>& LimitOrderBook::get_bids(size_t depth) const {
-    static thread_local std::vector<PriceLevel> result;
-    result.clear();
-    
-    const size_t n = std::min(depth, bid_prices_.size());
-    result.reserve(n);
-    
-    for (size_t i = 0; i < n; ++i) {
-        auto it = bids_.find(bid_prices_[i]);
-        if (it != bids_.end()) {
-            result.push_back(it->second);
-        }
+uint64_t LimitOrderBook::spread() const noexcept {
+    uint64_t bid = best_bid();
+    uint64_t ask = best_ask();
+    if (bid == 0 || ask == std::numeric_limits<uint64_t>::max()) {
+        return 0;
     }
-    
-    return result;
+    return ask - bid;
 }
 
-const std::vector<PriceLevel>& LimitOrderBook::get_asks(size_t depth) const {
-    static thread_local std::vector<PriceLevel> result;
-    result.clear();
-    
-    const size_t n = std::min(depth, ask_prices_.size());
-    result.reserve(n);
-    
-    for (size_t i = 0; i < n; ++i) {
-        auto it = asks_.find(ask_prices_[i]);
-        if (it != asks_.end()) {
-            result.push_back(it->second);
-        }
+uint64_t LimitOrderBook::mid_price() const noexcept {
+    uint64_t bid = best_bid();
+    uint64_t ask = best_ask();
+    if (bid == 0 || ask == std::numeric_limits<uint64_t>::max()) {
+        return 0;
     }
-    
-    return result;
+    return (bid + ask) / 2;
 }
+
+uint64_t LimitOrderBook::bid_quantity_at(uint64_t price) const noexcept {
+    PriceLevel* level = bids_.find(price);
+    return level ? level->total_quantity : 0;
+}
+
+uint64_t LimitOrderBook::ask_quantity_at(uint64_t price) const noexcept {
+    PriceLevel* level = asks_.find(price);
+    return level ? level->total_quantity : 0;
+}
+
+void LimitOrderBook::get_bids(std::vector<LevelInfo>& out, size_t depth) const {
+    out.clear();
+    out.reserve(depth);
+    
+    size_t count = 0;
+    for (const auto& level : bids_) {
+        if (count >= depth) break;
+        out.push_back({level.price_ticks, level.total_quantity, level.order_count});
+        ++count;
+    }
+}
+
+void LimitOrderBook::get_asks(std::vector<LevelInfo>& out, size_t depth) const {
+    out.clear();
+    out.reserve(depth);
+    
+    size_t count = 0;
+    for (const auto& level : asks_) {
+        if (count >= depth) break;
+        out.push_back({level.price_ticks, level.total_quantity, level.order_count});
+        ++count;
+    }
+}
+
+// =============================================================================
+// LIFECYCLE
+// =============================================================================
 
 void LimitOrderBook::clear() {
-    orders_.clear();
     bids_.clear();
     asks_.clear();
-    bid_prices_.clear();
-    ask_prices_.clear();
-    trades_.clear();
-    next_order_slot_ = 0;
-    next_order_id_ = 1;
-    next_trade_id_ = 1;
-    latency_stats_ = LatencyStats{};
+    order_map_.clear();
+    order_allocator_.reset();
+    level_allocator_.reset();
+    latency_stats_.reset();
+    trade_count_ = 0;
+    next_order_id_.store(1, std::memory_order_relaxed);
+    next_trade_id_.store(1, std::memory_order_relaxed);
 }
+
+// =============================================================================
+// SNAPSHOT
+// =============================================================================
 
 OrderBookSnapshot create_snapshot(const LimitOrderBook& book, size_t depth) {
     OrderBookSnapshot snapshot;
-    snapshot.symbol = "";  // Set externally
-    snapshot.best_bid_price = book.best_bid();
-    snapshot.best_ask_price = book.best_ask();
+    snapshot.symbol = book.symbol();
+    snapshot.best_bid = book.best_bid();
+    snapshot.best_ask = book.best_ask();
     snapshot.spread = book.spread();
     snapshot.mid_price = book.mid_price();
     snapshot.total_orders = book.total_orders();
     snapshot.total_trades = book.total_trades();
     snapshot.stats = book.get_latency_stats();
+    snapshot.timestamp = std::chrono::steady_clock::now();
     
-    const auto& bids = book.get_bids(depth);
-    const auto& asks = book.get_asks(depth);
-    
-    for (const auto& level : bids) {
-        snapshot.bids.emplace_back(level.price_ticks, level.total_quantity);
-    }
-    
-    for (const auto& level : asks) {
-        snapshot.asks.emplace_back(level.price_ticks, level.total_quantity);
-    }
+    book.get_bids(snapshot.bids, depth);
+    book.get_asks(snapshot.asks, depth);
     
     return snapshot;
 }

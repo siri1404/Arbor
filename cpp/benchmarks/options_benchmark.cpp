@@ -5,189 +5,697 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
+#include <cmath>
 
 using namespace arbor::options;
 
-void benchmark_single_pricing() {
-    std::cout << "\n=== SINGLE OPTION PRICING BENCHMARK ===\n\n";
+// Benchmark utilities
+struct BenchmarkStats {
+    double mean_ns;
+    double std_dev_ns;
+    double min_ns;
+    double max_ns;
+    double p50_ns;
+    double p95_ns;
+    double p99_ns;
+    int num_samples;
+};
+
+BenchmarkStats compute_stats(std::vector<int64_t>& times) {
+    std::sort(times.begin(), times.end());
     
-    const double S = 150.0;
-    const double K = 150.0;
-    const double T = 0.25;  // 3 months
-    const double r = 0.05;
-    const double sigma = 0.25;
+    const int n = times.size();
+    double sum = std::accumulate(times.begin(), times.end(), 0.0);
+    double mean = sum / n;
     
-    std::cout << "Parameters: S=$150, K=$150, T=0.25y, r=5%, σ=25%\n";
-    std::cout << "Running 100,000 option pricing calculations...\n\n";
-    
-    const int NUM_CALCS = 100000;
-    std::vector<PricingResult> results;
-    results.reserve(NUM_CALCS);
-    
-    const auto start = std::chrono::steady_clock::now();
-    
-    for (int i = 0; i < NUM_CALCS; ++i) {
-        results.push_back(BlackScholesPricer::price(S, K, T, r, sigma, OptionType::CALL));
+    double sq_sum = 0.0;
+    for (auto t : times) {
+        sq_sum += (t - mean) * (t - mean);
     }
+    double std_dev = std::sqrt(sq_sum / n);
     
-    const auto end = std::chrono::steady_clock::now();
-    const int64_t total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-    
-    // Calculate statistics
-    int64_t min_ns = INT64_MAX;
-    int64_t max_ns = 0;
-    int64_t sum_ns = 0;
-    
-    for (const auto& result : results) {
-        min_ns = std::min(min_ns, result.calc_time_ns);
-        max_ns = std::max(max_ns, result.calc_time_ns);
-        sum_ns += result.calc_time_ns;
-    }
-    
-    const double avg_ns = static_cast<double>(sum_ns) / NUM_CALCS;
-    
-    std::cout << "📊 RESULTS:\n";
-    std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    std::cout << std::fixed << std::setprecision(0);
-    std::cout << "Total calculations:        " << NUM_CALCS << "\n";
-    std::cout << "Total time:                " << total_ns / 1000 << " μs\n";
-    std::cout << "Average time per pricing:  " << avg_ns << " ns\n";
-    std::cout << "Minimum time:              " << min_ns << " ns\n";
-    std::cout << "Maximum time:              " << max_ns << " ns\n";
-    std::cout << "Throughput:                " << std::setprecision(0) 
-              << (NUM_CALCS * 1e9) / total_ns << " pricings/sec\n";
-    
-    std::cout << std::fixed << std::setprecision(4);
-    std::cout << "\nSample result:\n";
-    std::cout << "  Call price: $" << results[0].price << "\n";
-    std::cout << "  Delta: " << results[0].greeks.delta << "\n";
-    std::cout << "  Gamma: " << results[0].greeks.gamma << "\n";
-    std::cout << "  Theta: $" << results[0].greeks.theta << "/day\n";
-    std::cout << "  Vega: $" << results[0].greeks.vega << "/1%\n";
-    
-    if (avg_ns < 1000) {
-        std::cout << "\n[EXCELLENT] Sub-microsecond pricing achieved\n";
-    } else if (avg_ns < 10000) {
-        std::cout << "\n[GOOD] Average latency < 10 us\n";
-    }
-    
-    std::cout << "\nIndustry target: < 1 us for real-time pricing\n";
-    std::cout << "Status: " << (avg_ns < 1000 ? "[PRODUCTION READY]" : "[ACCEPTABLE]") << "\n";
+    return BenchmarkStats{
+        mean,
+        std_dev,
+        static_cast<double>(times.front()),
+        static_cast<double>(times.back()),
+        static_cast<double>(times[n / 2]),
+        static_cast<double>(times[static_cast<int>(n * 0.95)]),
+        static_cast<double>(times[static_cast<int>(n * 0.99)]),
+        n
+    };
 }
 
-void benchmark_option_chain() {
-    std::cout << "\n=== OPTION CHAIN CALCULATION BENCHMARK ===\n\n";
+void print_stats(const std::string& name, const BenchmarkStats& stats) {
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "  " << std::left << std::setw(30) << name << " | "
+              << std::setw(8) << stats.mean_ns << " ns (mean) | "
+              << std::setw(8) << stats.p50_ns << " ns (p50) | "
+              << std::setw(8) << stats.p99_ns << " ns (p99) | "
+              << std::setw(10) << (1e9 / stats.mean_ns) << " ops/sec\n";
+}
+
+// ============================================================================
+// BLACK-SCHOLES BENCHMARK
+// ============================================================================
+
+void benchmark_black_scholes() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "                BLACK-SCHOLES BENCHMARK                      \n";
+    std::cout << "============================================================\n\n";
     
-    const double S = 150.0;
-    const double T = 0.25;
-    const double r = 0.05;
-    const double sigma = 0.25;
+    const int NUM_WARMUP = 10000;
+    const int NUM_ITERATIONS = 100000;
     
-    // Generate strikes from 80% to 120% of spot
+    // Parameters
+    const double S = 100.0, K = 100.0, T = 0.25, r = 0.05, sigma = 0.25;
+    
+    // Warmup
+    for (int i = 0; i < NUM_WARMUP; ++i) {
+        volatile auto result = BlackScholesPricer::price(S, K, T, r, sigma, OptionType::CALL);
+    }
+    
+    // Single option pricing
+    std::vector<int64_t> single_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = BlackScholesPricer::price(S, K, T, r, sigma, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        single_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto single_stats = compute_stats(single_times);
+    print_stats("Single Option (Call)", single_stats);
+    
+    // Put pricing
+    std::vector<int64_t> put_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = BlackScholesPricer::price(S, K, T, r, sigma, OptionType::PUT);
+        auto end = std::chrono::steady_clock::now();
+        put_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto put_stats = compute_stats(put_times);
+    print_stats("Single Option (Put)", put_stats);
+    
+    // Full Greeks calculation
+    std::vector<int64_t> greeks_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto greeks = BlackScholesPricer::compute_all_greeks(S, K, T, r, sigma, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        greeks_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto greeks_stats = compute_stats(greeks_times);
+    print_stats("Full Greeks (9 sensitivities)", greeks_stats);
+    
+    // Option chain (17 strikes)
     std::vector<double> strikes;
-    for (double K = S * 0.8; K <= S * 1.2; K += 2.5) {
-        strikes.push_back(K);
+    for (double k = 80; k <= 120; k += 2.5) strikes.push_back(k);
+    
+    const int CHAIN_ITERATIONS = 10000;
+    std::vector<int64_t> chain_times(CHAIN_ITERATIONS);
+    for (int i = 0; i < CHAIN_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto chain = BlackScholesPricer::option_chain(S, strikes, T, r, sigma);
+        auto end = std::chrono::steady_clock::now();
+        chain_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
     
-    std::cout << "Calculating option chain for " << strikes.size() << " strikes...\n";
-    std::cout << "Strike range: $" << strikes.front() << " - $" << strikes.back() << "\n\n";
+    auto chain_stats = compute_stats(chain_times);
+    print_stats("Option Chain (17 strikes, C+P)", chain_stats);
     
-    const auto start = std::chrono::steady_clock::now();
-    
-    auto chain = BlackScholesPricer::option_chain(S, strikes, T, r, sigma);
-    
-    const auto end = std::chrono::steady_clock::now();
-    const int64_t total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-    const double avg_ns_per_strike = static_cast<double>(total_ns) / strikes.size();
-    
-    std::cout << "📊 RESULTS:\n";
-    std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    std::cout << "Total time:                " << total_ns / 1000 << " μs\n";
-    std::cout << "Time per strike (C+P):     " << std::fixed << std::setprecision(0) 
-              << avg_ns_per_strike << " ns\n";
-    std::cout << "Throughput:                " << (strikes.size() * 1e9) / total_ns 
-              << " strikes/sec\n";
-    
-    std::cout << "\nSample chain (first 5 strikes):\n";
-    std::cout << std::fixed << std::setprecision(2);
-    std::cout << "Strike | Call Price | Call Delta | Put Price  | Put Delta\n";
-    std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    
-    for (size_t i = 0; i < std::min<size_t>(5, chain.size()); ++i) {
-        const auto& [call, put] = chain[i];
-        std::cout << "$" << std::setw(6) << strikes[i] << " | "
-                  << "$" << std::setw(9) << call.price << " | "
-                  << std::setw(10) << call.greeks.delta << " | "
-                  << "$" << std::setw(9) << put.price << " | "
-                  << std::setw(9) << put.greeks.delta << "\n";
+    // Implied volatility
+    auto market_result = BlackScholesPricer::price(S, K, T, r, sigma, OptionType::CALL);
+    const int IV_ITERATIONS = 50000;
+    std::vector<int64_t> iv_times(IV_ITERATIONS);
+    for (int i = 0; i < IV_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto iv = BlackScholesPricer::implied_volatility(market_result.price, S, K, T, r, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        iv_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
+    
+    auto iv_stats = compute_stats(iv_times);
+    print_stats("Implied Volatility (Newton)", iv_stats);
+    
+    std::cout << "\n  Sample Result: Call Price = $" << std::setprecision(4) << market_result.price
+              << ", Delta = " << market_result.greeks.delta
+              << ", Gamma = " << market_result.greeks.gamma << "\n";
 }
 
-void benchmark_implied_volatility() {
-    std::cout << "\n=== IMPLIED VOLATILITY SOLVER BENCHMARK ===\n\n";
+// ============================================================================
+// MERTON JUMP-DIFFUSION BENCHMARK
+// ============================================================================
+
+void benchmark_jump_diffusion() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "            MERTON JUMP-DIFFUSION BENCHMARK                  \n";
+    std::cout << "============================================================\n\n";
     
-    const double S = 150.0;
-    const double K = 150.0;
-    const double T = 0.25;
-    const double r = 0.05;
-    const double true_sigma = 0.25;
+    const int NUM_ITERATIONS = 10000;
     
-    // Calculate theoretical price
-    auto theoretical = BlackScholesPricer::price(S, K, T, r, true_sigma, OptionType::CALL);
-    const double market_price = theoretical.price;
+    const double S = 100.0, K = 100.0, T = 1.0, r = 0.05, sigma = 0.20;
+    JumpDiffusionParams jp{0.5, -0.1, 0.2};
     
-    std::cout << "Solving for IV given market price: $" << std::fixed << std::setprecision(4) 
-              << market_price << "\n";
-    std::cout << "Expected IV: " << (true_sigma * 100) << "%\n";
-    std::cout << "Running 10,000 IV calculations...\n\n";
-    
-    const int NUM_CALCS = 10000;
-    std::vector<int64_t> times;
-    times.reserve(NUM_CALCS);
-    
-    double sum_iv = 0.0;
-    
-    for (int i = 0; i < NUM_CALCS; ++i) {
-        const auto start = std::chrono::steady_clock::now();
-        
-        double iv = BlackScholesPricer::implied_volatility(
-            market_price, S, K, T, r, OptionType::CALL
-        );
-        
-        const auto end = std::chrono::steady_clock::now();
-        times.push_back(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count());
-        sum_iv += iv;
+    // Warmup
+    for (int i = 0; i < 1000; ++i) {
+        volatile auto result = MertonJumpDiffusion::price(S, K, T, r, sigma, jp, OptionType::CALL);
     }
     
-    const double avg_iv = sum_iv / NUM_CALCS;
-    const int64_t min_time = *std::min_element(times.begin(), times.end());
-    const int64_t max_time = *std::max_element(times.begin(), times.end());
-    const int64_t avg_time = std::accumulate(times.begin(), times.end(), 0LL) / NUM_CALCS;
-    
-    std::cout << "📊 RESULTS:\n";
-    std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    std::cout << "Solved IV:                 " << std::setprecision(2) << (avg_iv * 100) << "%\n";
-    std::cout << "Error vs true σ:           " << std::scientific << std::abs(avg_iv - true_sigma) << "\n";
-    std::cout << std::fixed << std::setprecision(0);
-    std::cout << "Average solve time:        " << avg_time / 1000.0 << " μs\n";
-    std::cout << "Minimum solve time:        " << min_time / 1000.0 << " μs\n";
-    std::cout << "Maximum solve time:        " << max_time / 1000.0 << " μs\n";
-    
-    if (avg_time < 10000) {
-        std::cout << "\n[GOOD] IV solver performance within target\n";
+    // Series solution (default 50 terms)
+    std::vector<int64_t> series_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = MertonJumpDiffusion::price(S, K, T, r, sigma, jp, OptionType::CALL, 50);
+        auto end = std::chrono::steady_clock::now();
+        series_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
+    
+    auto series_stats = compute_stats(series_times);
+    print_stats("Analytical (50 terms)", series_stats);
+    
+    // High precision (100 terms)
+    std::vector<int64_t> hp_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = MertonJumpDiffusion::price(S, K, T, r, sigma, jp, OptionType::CALL, 100);
+        auto end = std::chrono::steady_clock::now();
+        hp_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto hp_stats = compute_stats(hp_times);
+    print_stats("Analytical (100 terms)", hp_stats);
+    
+    // Greeks (finite difference)
+    const int GREEKS_ITERATIONS = 5000;
+    std::vector<int64_t> greeks_times(GREEKS_ITERATIONS);
+    for (int i = 0; i < GREEKS_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto greeks = MertonJumpDiffusion::compute_greeks(S, K, T, r, sigma, jp, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        greeks_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto greeks_stats = compute_stats(greeks_times);
+    print_stats("Greeks (finite diff)", greeks_stats);
+    
+    auto result = MertonJumpDiffusion::price(S, K, T, r, sigma, jp, OptionType::CALL);
+    auto bs_result = BlackScholesPricer::price(S, K, T, r, sigma, OptionType::CALL);
+    
+    std::cout << "\n  Jump-Diffusion Price: $" << std::setprecision(4) << result.price
+              << " vs BS Price: $" << bs_result.price
+              << " (diff: $" << (result.price - bs_result.price) << ")\n";
 }
+
+// ============================================================================
+// HESTON STOCHASTIC VOLATILITY BENCHMARK
+// ============================================================================
+
+void benchmark_heston() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "         HESTON STOCHASTIC VOLATILITY BENCHMARK              \n";
+    std::cout << "============================================================\n\n";
+    
+    const int NUM_ITERATIONS = 5000;
+    
+    const double S = 100.0, K = 100.0, T = 1.0, r = 0.05;
+    HestonParams params{0.04, 2.0, 0.04, 0.3, -0.7};
+    
+    // Warmup
+    for (int i = 0; i < 500; ++i) {
+        volatile auto result = HestonModel::price(S, K, T, r, params, OptionType::CALL);
+    }
+    
+    // Quadrature pricing
+    std::vector<int64_t> quad_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = HestonModel::price_quadrature(S, K, T, r, params, OptionType::CALL, 1000);
+        auto end = std::chrono::steady_clock::now();
+        quad_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto quad_stats = compute_stats(quad_times);
+    print_stats("Quadrature (1000 pts)", quad_stats);
+    
+    // Greeks
+    const int GREEKS_ITERATIONS = 1000;
+    std::vector<int64_t> greeks_times(GREEKS_ITERATIONS);
+    for (int i = 0; i < GREEKS_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto greeks = HestonModel::compute_greeks(S, K, T, r, params, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        greeks_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto greeks_stats = compute_stats(greeks_times);
+    print_stats("Greeks (finite diff)", greeks_stats);
+    
+    // Characteristic function evaluation
+    const int CF_ITERATIONS = 50000;
+    std::vector<int64_t> cf_times(CF_ITERATIONS);
+    for (int i = 0; i < CF_ITERATIONS; ++i) {
+        std::complex<double> u(1.0, 0.5);
+        auto start = std::chrono::steady_clock::now();
+        auto cf = HestonModel::characteristic_function(u, S, T, r, params);
+        auto end = std::chrono::steady_clock::now();
+        cf_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto cf_stats = compute_stats(cf_times);
+    print_stats("Characteristic Func", cf_stats);
+    
+    auto result = HestonModel::price(S, K, T, r, params, OptionType::CALL);
+    std::cout << "\n  Heston Price: $" << std::setprecision(4) << result.price
+              << ", Feller satisfied: " << (params.satisfies_feller() ? "Yes" : "No") << "\n";
+}
+
+// ============================================================================
+// SABR MODEL BENCHMARK
+// ============================================================================
+
+void benchmark_sabr() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "                    SABR MODEL BENCHMARK                      \n";
+    std::cout << "============================================================\n\n";
+    
+    const int NUM_ITERATIONS = 100000;
+    
+    const double F = 100.0, T = 1.0;
+    SABRParams params{0.3, 0.5, -0.3, 0.4};
+    
+    // Implied vol calculation
+    std::vector<int64_t> iv_times(NUM_ITERATIONS);
+    for (int i = 0; i < NUM_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto vol = SABRModel::implied_volatility(F, F * 1.1, T, params);
+        auto end = std::chrono::steady_clock::now();
+        iv_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto iv_stats = compute_stats(iv_times);
+    print_stats("Implied Vol (Hagan)", iv_stats);
+    
+    // Full pricing
+    const int PRICE_ITERATIONS = 50000;
+    std::vector<int64_t> price_times(PRICE_ITERATIONS);
+    for (int i = 0; i < PRICE_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = SABRModel::price(F, F * 1.1, T, 0.05, params, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        price_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto price_stats = compute_stats(price_times);
+    print_stats("Full Pricing", price_stats);
+    
+    // Vol surface (multiple strikes)
+    std::vector<double> strikes = {80, 85, 90, 95, 100, 105, 110, 115, 120};
+    const int SURFACE_ITERATIONS = 10000;
+    std::vector<int64_t> surface_times(SURFACE_ITERATIONS);
+    for (int i = 0; i < SURFACE_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        for (double K : strikes) {
+            volatile auto vol = SABRModel::implied_volatility(F, K, T, params);
+        }
+        auto end = std::chrono::steady_clock::now();
+        surface_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto surface_stats = compute_stats(surface_times);
+    print_stats("Vol Smile (9 strikes)", surface_stats);
+    
+    double atm_vol = SABRModel::implied_volatility(F, F, T, params);
+    double otm_vol = SABRModel::implied_volatility(F, F * 1.2, T, params);
+    std::cout << "\n  ATM Vol: " << std::setprecision(2) << (atm_vol * 100) << "%"
+              << ", 20% OTM Call Vol: " << (otm_vol * 100) << "%\n";
+}
+
+// ============================================================================
+// AMERICAN OPTIONS BENCHMARK
+// ============================================================================
+
+void benchmark_american() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "              AMERICAN OPTIONS BENCHMARK                      \n";
+    std::cout << "============================================================\n\n";
+    
+    const double S = 100.0, K = 100.0, T = 1.0, r = 0.05, sigma = 0.25;
+    
+    // Binomial tree (100 steps)
+    const int TREE_ITERATIONS = 5000;
+    std::vector<int64_t> tree100_times(TREE_ITERATIONS);
+    for (int i = 0; i < TREE_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AmericanOptionPricer::price_binomial(S, K, T, r, sigma, OptionType::PUT, {100, false, false});
+        auto end = std::chrono::steady_clock::now();
+        tree100_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto tree100_stats = compute_stats(tree100_times);
+    print_stats("Binomial (100 steps)", tree100_stats);
+    
+    // Binomial with Richardson
+    std::vector<int64_t> tree_rich_times(TREE_ITERATIONS);
+    for (int i = 0; i < TREE_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AmericanOptionPricer::price_binomial(S, K, T, r, sigma, OptionType::PUT, {100, true, true});
+        auto end = std::chrono::steady_clock::now();
+        tree_rich_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto tree_rich_stats = compute_stats(tree_rich_times);
+    print_stats("Binomial + Richardson", tree_rich_stats);
+    
+    // High precision (500 steps)
+    const int HP_ITERATIONS = 1000;
+    std::vector<int64_t> tree500_times(HP_ITERATIONS);
+    for (int i = 0; i < HP_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AmericanOptionPricer::price_binomial(S, K, T, r, sigma, OptionType::PUT, {500, true, true});
+        auto end = std::chrono::steady_clock::now();
+        tree500_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto tree500_stats = compute_stats(tree500_times);
+    print_stats("Binomial (500 steps)", tree500_stats);
+    
+    // Trinomial
+    std::vector<int64_t> tri_times(TREE_ITERATIONS);
+    for (int i = 0; i < TREE_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AmericanOptionPricer::price_trinomial(S, K, T, r, sigma, OptionType::PUT, 100);
+        auto end = std::chrono::steady_clock::now();
+        tri_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto tri_stats = compute_stats(tri_times);
+    print_stats("Trinomial (100 steps)", tri_stats);
+    
+    auto american = AmericanOptionPricer::price_binomial(S, K, T, r, sigma, OptionType::PUT, {200, true, true});
+    auto european = BlackScholesPricer::price(S, K, T, r, sigma, OptionType::PUT);
+    double premium = american.price - european.price;
+    
+    std::cout << "\n  American Put: $" << std::setprecision(4) << american.price
+              << ", European Put: $" << european.price
+              << ", Early Exercise Premium: $" << premium << "\n";
+}
+
+// ============================================================================
+// LONGSTAFF-SCHWARTZ LSM BENCHMARK
+// ============================================================================
+
+void benchmark_lsm() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "          LONGSTAFF-SCHWARTZ LSM BENCHMARK                    \n";
+    std::cout << "============================================================\n\n";
+    
+    const double S = 100.0, K = 100.0, T = 1.0, r = 0.05, sigma = 0.25;
+    
+    // 10k paths
+    LSMConfig config_10k{10000, 50, 3, 42, true, true};
+    const int LSM_ITERATIONS = 100;
+    
+    std::vector<int64_t> lsm_10k_times(LSM_ITERATIONS);
+    for (int i = 0; i < LSM_ITERATIONS; ++i) {
+        LSMConfig config{10000, 50, 3, static_cast<uint64_t>(42 + i), true, true};
+        auto start = std::chrono::steady_clock::now();
+        auto result = LongstaffSchwartzPricer::price(S, K, T, r, sigma, OptionType::PUT, config);
+        auto end = std::chrono::steady_clock::now();
+        lsm_10k_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto lsm_10k_stats = compute_stats(lsm_10k_times);
+    std::cout << "  " << std::left << std::setw(30) << "LSM (10k paths)" << " | "
+              << std::fixed << std::setprecision(2)
+              << std::setw(8) << (lsm_10k_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(8) << (lsm_10k_stats.p99_ns / 1e6) << " ms (p99)\n";
+    
+    // 50k paths
+    std::vector<int64_t> lsm_50k_times(LSM_ITERATIONS);
+    for (int i = 0; i < LSM_ITERATIONS; ++i) {
+        LSMConfig config{50000, 50, 3, static_cast<uint64_t>(42 + i), true, true};
+        auto start = std::chrono::steady_clock::now();
+        auto result = LongstaffSchwartzPricer::price(S, K, T, r, sigma, OptionType::PUT, config);
+        auto end = std::chrono::steady_clock::now();
+        lsm_50k_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto lsm_50k_stats = compute_stats(lsm_50k_times);
+    std::cout << "  " << std::left << std::setw(30) << "LSM (50k paths)" << " | "
+              << std::setw(8) << (lsm_50k_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(8) << (lsm_50k_stats.p99_ns / 1e6) << " ms (p99)\n";
+    
+    // Heston LSM
+    HestonParams hp{0.04, 2.0, 0.04, 0.3, -0.7};
+    const int HESTON_ITERATIONS = 50;
+    
+    std::vector<int64_t> heston_times(HESTON_ITERATIONS);
+    for (int i = 0; i < HESTON_ITERATIONS; ++i) {
+        LSMConfig config{20000, 50, 3, static_cast<uint64_t>(42 + i), true, false};
+        auto start = std::chrono::steady_clock::now();
+        auto result = LongstaffSchwartzPricer::price_heston(S, K, T, r, hp, OptionType::PUT, config);
+        auto end = std::chrono::steady_clock::now();
+        heston_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto heston_stats = compute_stats(heston_times);
+    std::cout << "  " << std::left << std::setw(30) << "LSM Heston (20k paths)" << " | "
+              << std::setw(8) << (heston_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(8) << (heston_stats.p99_ns / 1e6) << " ms (p99)\n";
+    
+    auto result = LongstaffSchwartzPricer::price(S, K, T, r, sigma, OptionType::PUT, 
+                                                  {50000, 50, 3, 42, true, true});
+    auto binomial = AmericanOptionPricer::price_binomial(S, K, T, r, sigma, OptionType::PUT);
+    
+    std::cout << "\n  LSM Price: $" << std::setprecision(4) << result.price
+              << " (SE: " << result.std_error << ")"
+              << " vs Binomial: $" << binomial.price << "\n";
+}
+
+// ============================================================================
+// MONTE CARLO ENGINE BENCHMARK
+// ============================================================================
+
+void benchmark_monte_carlo() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "              MONTE CARLO ENGINE BENCHMARK                    \n";
+    std::cout << "============================================================\n\n";
+    
+    const double S = 100.0, K = 100.0, T = 1.0, r = 0.05, sigma = 0.25;
+    
+    // European MC (100k paths)
+    const int MC_ITERATIONS = 100;
+    
+    std::vector<int64_t> mc_100k_times(MC_ITERATIONS);
+    for (int i = 0; i < MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = MonteCarloEngine::price_european(S, K, T, r, sigma, OptionType::CALL, 100000, 42 + i, true, true);
+        auto end = std::chrono::steady_clock::now();
+        mc_100k_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto mc_100k_stats = compute_stats(mc_100k_times);
+    std::cout << "  " << std::left << std::setw(30) << "European (100k paths)" << " | "
+              << std::fixed << std::setprecision(2)
+              << std::setw(8) << (mc_100k_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(10) << (100000.0 / (mc_100k_stats.mean_ns / 1e9)) << " paths/sec\n";
+    
+    // European MC (1M paths)
+    std::vector<int64_t> mc_1m_times(MC_ITERATIONS);
+    for (int i = 0; i < MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = MonteCarloEngine::price_european(S, K, T, r, sigma, OptionType::CALL, 1000000, 42 + i, true, true);
+        auto end = std::chrono::steady_clock::now();
+        mc_1m_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto mc_1m_stats = compute_stats(mc_1m_times);
+    std::cout << "  " << std::left << std::setw(30) << "European (1M paths)" << " | "
+              << std::setw(8) << (mc_1m_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(10) << (1000000.0 / (mc_1m_stats.mean_ns / 1e9)) << " paths/sec\n";
+    
+    // Heston MC
+    HestonParams hp{0.04, 2.0, 0.04, 0.3, -0.7};
+    
+    std::vector<int64_t> heston_mc_times(MC_ITERATIONS);
+    for (int i = 0; i < MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = MonteCarloEngine::price_european_heston(S, K, T, r, hp, OptionType::CALL, 100000, 252, 42 + i);
+        auto end = std::chrono::steady_clock::now();
+        heston_mc_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto heston_mc_stats = compute_stats(heston_mc_times);
+    std::cout << "  " << std::left << std::setw(30) << "Heston MC (100k paths)" << " | "
+              << std::setw(8) << (heston_mc_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(10) << (100000.0 / (heston_mc_stats.mean_ns / 1e9)) << " paths/sec\n";
+    
+    // Jump-Diffusion MC
+    JumpDiffusionParams jp{0.5, -0.1, 0.2};
+    
+    std::vector<int64_t> jd_mc_times(MC_ITERATIONS);
+    for (int i = 0; i < MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = MonteCarloEngine::price_jump_diffusion(S, K, T, r, sigma, jp, OptionType::CALL, 100000, 252, 42 + i);
+        auto end = std::chrono::steady_clock::now();
+        jd_mc_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto jd_mc_stats = compute_stats(jd_mc_times);
+    std::cout << "  " << std::left << std::setw(30) << "Jump-Diffusion MC (100k)" << " | "
+              << std::setw(8) << (jd_mc_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(10) << (100000.0 / (jd_mc_stats.mean_ns / 1e9)) << " paths/sec\n";
+    
+#ifdef __AVX2__
+    // SIMD Monte Carlo
+    std::vector<int64_t> simd_times(MC_ITERATIONS);
+    for (int i = 0; i < MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = SIMDMonteCarloEngine::price_european_avx2(S, K, T, r, sigma, OptionType::CALL, 1000000, 42 + i);
+        auto end = std::chrono::steady_clock::now();
+        simd_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto simd_stats = compute_stats(simd_times);
+    std::cout << "  " << std::left << std::setw(30) << "SIMD AVX2 (1M paths)" << " | "
+              << std::setw(8) << (simd_stats.mean_ns / 1e6) << " ms (mean) | "
+              << std::setw(10) << (1000000.0 / (simd_stats.mean_ns / 1e9)) << " paths/sec\n";
+#endif
+}
+
+// ============================================================================
+// EXOTIC OPTIONS BENCHMARK
+// ============================================================================
+
+void benchmark_exotics() {
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "               EXOTIC OPTIONS BENCHMARK                       \n";
+    std::cout << "============================================================\n\n";
+    
+    const double S = 100.0, K = 100.0, T = 1.0, r = 0.05, sigma = 0.25;
+    
+    // Barrier options - analytical
+    BarrierParams barrier{BarrierType::DOWN_AND_OUT, 80.0, 0.0};
+    const int BARRIER_ITERATIONS = 50000;
+    
+    std::vector<int64_t> barrier_anal_times(BARRIER_ITERATIONS);
+    for (int i = 0; i < BARRIER_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = BarrierOptionPricer::price_analytical(S, K, T, r, sigma, barrier, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        barrier_anal_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto barrier_anal_stats = compute_stats(barrier_anal_times);
+    print_stats("Barrier (analytical)", barrier_anal_stats);
+    
+    // Barrier MC
+    const int BARRIER_MC_ITERATIONS = 100;
+    std::vector<int64_t> barrier_mc_times(BARRIER_MC_ITERATIONS);
+    for (int i = 0; i < BARRIER_MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = BarrierOptionPricer::price_monte_carlo(S, K, T, r, sigma, barrier, OptionType::CALL, 252, 100000, 42 + i);
+        auto end = std::chrono::steady_clock::now();
+        barrier_mc_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto barrier_mc_stats = compute_stats(barrier_mc_times);
+    std::cout << "  " << std::left << std::setw(30) << "Barrier MC (100k paths)" << " | "
+              << std::fixed << std::setprecision(2)
+              << std::setw(8) << (barrier_mc_stats.mean_ns / 1e6) << " ms (mean)\n";
+    
+    // Asian options
+    AsianParams asian_params{AveragingType::GEOMETRIC, 12, false};
+    const int ASIAN_ITERATIONS = 50000;
+    
+    std::vector<int64_t> asian_geo_times(ASIAN_ITERATIONS);
+    for (int i = 0; i < ASIAN_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AsianOptionPricer::price_geometric(S, K, T, r, sigma, asian_params, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        asian_geo_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto asian_geo_stats = compute_stats(asian_geo_times);
+    print_stats("Asian Geometric (analytical)", asian_geo_stats);
+    
+    // Asian arithmetic MC
+    AsianParams arith_params{AveragingType::ARITHMETIC, 12, false};
+    const int ASIAN_MC_ITERATIONS = 100;
+    
+    std::vector<int64_t> asian_arith_times(ASIAN_MC_ITERATIONS);
+    for (int i = 0; i < ASIAN_MC_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AsianOptionPricer::price_arithmetic(S, K, T, r, sigma, arith_params, OptionType::CALL, 100000, 42 + i);
+        auto end = std::chrono::steady_clock::now();
+        asian_arith_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto asian_arith_stats = compute_stats(asian_arith_times);
+    std::cout << "  " << std::left << std::setw(30) << "Asian Arithmetic MC (100k)" << " | "
+              << std::setw(8) << (asian_arith_stats.mean_ns / 1e6) << " ms (mean)\n";
+    
+    // Turnbull-Wakeman
+    std::vector<int64_t> tw_times(ASIAN_ITERATIONS);
+    for (int i = 0; i < ASIAN_ITERATIONS; ++i) {
+        auto start = std::chrono::steady_clock::now();
+        auto result = AsianOptionPricer::price_turnbull_wakeman(S, K, T, r, sigma, arith_params, OptionType::CALL);
+        auto end = std::chrono::steady_clock::now();
+        tw_times[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    }
+    
+    auto tw_stats = compute_stats(tw_times);
+    print_stats("Turnbull-Wakeman approx", tw_stats);
+}
+
+// ============================================================================
+// MAIN
+// ============================================================================
 
 int main() {
     std::cout << "============================================================\n";
-    std::cout << "         ARBOR OPTIONS PRICING ENGINE - BENCHMARK           \n";
+    std::cout << "      ARBOR EXOTIC OPTIONS PRICING ENGINE - BENCHMARK        \n";
     std::cout << "============================================================\n";
+    std::cout << "\n";
+    std::cout << "Models implemented:\n";
+    std::cout << "  - Black-Scholes with extended Greeks (9 sensitivities)\n";
+    std::cout << "  - Merton Jump-Diffusion (analytical series)\n";
+    std::cout << "  - Heston Stochastic Volatility (characteristic function)\n";
+    std::cout << "  - SABR Vol Surface (Hagan approximation)\n";
+    std::cout << "  - American Options (Binomial/Trinomial + Richardson)\n";
+    std::cout << "  - Longstaff-Schwartz LSM (Laguerre basis)\n";
+    std::cout << "  - Barrier Options (analytical + Monte Carlo)\n";
+    std::cout << "  - Asian Options (geometric + arithmetic + Turnbull-Wakeman)\n";
+#ifdef __AVX2__
+    std::cout << "  - SIMD Monte Carlo (AVX2 vectorized)\n";
+#endif
+    std::cout << "\n";
     
-    benchmark_single_pricing();
-    benchmark_option_chain();
-    benchmark_implied_volatility();
+    benchmark_black_scholes();
+    benchmark_jump_diffusion();
+    benchmark_heston();
+    benchmark_sabr();
+    benchmark_american();
+    benchmark_lsm();
+    benchmark_monte_carlo();
+    benchmark_exotics();
     
-    std::cout << "\nAll benchmarks complete.\n\n";
+    std::cout << "\n";
+    std::cout << "============================================================\n";
+    std::cout << "                   BENCHMARK COMPLETE                         \n";
+    std::cout << "============================================================\n";
     
     return 0;
 }
