@@ -1,0 +1,37 @@
+{
+  "tests": 5,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "BlackScholesTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "ATMCallPrice",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
+          "line": 7
+        },
+        {
+          "name": "PutCallParity",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
+          "line": 32
+        },
+        {
+          "name": "ImpliedVolatility",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
+          "line": 44
+        },
+        {
+          "name": "IntrinsicValue",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
+          "line": 59
+        },
+        {
+          "name": "Performance",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
+          "line": 70
+        }
+      ]
+    }
+  ]
+}

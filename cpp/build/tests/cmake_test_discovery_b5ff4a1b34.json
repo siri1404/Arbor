@@ -1,0 +1,37 @@
+{
+  "tests": 5,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "MonteCarloTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "BasicSimulation",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/montecarlo_test.cpp",
+          "line": 7
+        },
+        {
+          "name": "ExpectedReturn",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/montecarlo_test.cpp",
+          "line": 27
+        },
+        {
+          "name": "VaRCalculation",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/montecarlo_test.cpp",
+          "line": 49
+        },
+        {
+          "name": "MultiThreading",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/montecarlo_test.cpp",
+          "line": 67
+        },
+        {
+          "name": "CorrelationMatrix",
+          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/montecarlo_test.cpp",
+          "line": 103
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/tests/options_test[1]_tests.cmake")
+  include("C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/tests/options_test[1]_tests.cmake")
+else()
+  add_test(options_test_NOT_BUILT options_test_NOT_BUILT)
+endif()

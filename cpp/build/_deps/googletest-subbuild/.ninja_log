@@ -1,0 +1,21 @@
+# ninja log v7
+2	64	7918914429508518	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	566457e7cf7f6164
+2	64	7918914429508518	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	566457e7cf7f6164
+64	2761	7918914456452985	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	2cdd8c04334e7d55
+64	2761	7918914456452985	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	2cdd8c04334e7d55
+2762	2910	7918914456531457	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	e26fa48ce65d201b
+2762	2910	7918914456531457	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	e26fa48ce65d201b
+2910	2980	7918914458643673	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	9bba642760ad2433
+2910	2980	7918914458643673	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	9bba642760ad2433
+2980	3060	7918914459401637	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	ec1fef7b3e971606
+2980	3060	7918914459401637	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	ec1fef7b3e971606
+3060	3120	7918914459971138	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	343d9158632bf141
+3060	3120	7918914459971138	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	343d9158632bf141
+3120	3211	7918914460937390	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	b60dc28f12e6edb5
+3120	3211	7918914460937390	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	b60dc28f12e6edb5
+3212	3292	7918914461766431	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	b831e39fc8f6ca37
+3212	3292	7918914461766431	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	b831e39fc8f6ca37
+3292	3370	7918914462526242	CMakeFiles/googletest-populate-complete	cf4ef356ed1fc235
+3292	3370	7918914462526242	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	cf4ef356ed1fc235
+3292	3370	7918914462526242	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	cf4ef356ed1fc235
+3292	3370	7918914462526242	C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	cf4ef356ed1fc235
