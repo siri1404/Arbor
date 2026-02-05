@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🌳 Arbor</h1>
+  <h1>Arbor</h1>
 </div>
 
 <div align="center">
