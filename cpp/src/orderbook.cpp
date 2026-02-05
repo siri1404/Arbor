@@ -257,7 +257,7 @@ void LimitOrderBook::match_order(Order* order, std::vector<Trade>* trades_out) {
 template<Side AggSide>
 void LimitOrderBook::match_aggressive(Order* aggressor, std::vector<Trade>* trades_out) {
     // Select opposite side book
-    auto& passive_book = []() -> auto& {
+    auto& passive_book = [this]() -> auto& {
         if constexpr (AggSide == Side::BUY) {
             return asks_;
         } else {

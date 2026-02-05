@@ -568,7 +568,7 @@ void benchmark_work_stealing() {
     std::cout << "  Steal attempts: " << steals_attempted.load() << "\n";
     std::cout << "  Steal success:  " << steals_succeeded.load() 
               << " (" << std::fixed << std::setprecision(1) 
-              << 100.0 * steals_succeeded / std::max(1UL, steals_attempted.load()) << "%)\n";
+              << 100.0 * steals_succeeded / std::max(1ULL, steals_attempted.load()) << "%)\n";
     std::cout << "  [INFO] Owner push/pop is wait-free, stealing is lock-free\n";
 }
 

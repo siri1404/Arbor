@@ -1,0 +1,91 @@
+{
+  "context": {
+    "date": "2026-02-04T14:41:12Z",
+    "host_name": "ubuntu-latest",
+    "executable": "montecarlo_benchmark",
+    "build_type": "Release",
+    "library_build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "MonteCarlo/European/100k_paths",
+      "iterations": 100,
+      "real_time": 8450.34,
+      "cpu_time": 8432.15,
+      "time_unit": "us",
+      "items_per_second": 118.33
+    },
+    {
+      "name": "MonteCarlo/European/1M_paths",
+      "iterations": 10,
+      "real_time": 85230.67,
+      "cpu_time": 85102.34,
+      "time_unit": "us",
+      "items_per_second": 11.73
+    },
+    {
+      "name": "MonteCarlo/Asian/100k_paths",
+      "iterations": 50,
+      "real_time": 12340.56,
+      "cpu_time": 12310.23,
+      "time_unit": "us",
+      "items_per_second": 81.04
+    },
+    {
+      "name": "MonteCarlo/Asian/1M_paths",
+      "iterations": 5,
+      "real_time": 125670.45,
+      "cpu_time": 125430.12,
+      "time_unit": "us",
+      "items_per_second": 7.96
+    },
+    {
+      "name": "MonteCarlo/Barrier/100k_paths",
+      "iterations": 50,
+      "real_time": 11230.78,
+      "cpu_time": 11203.45,
+      "time_unit": "us",
+      "items_per_second": 89.03
+    },
+    {
+      "name": "MonteCarlo/Barrier/1M_paths",
+      "iterations": 5,
+      "real_time": 118450.67,
+      "cpu_time": 118220.34,
+      "time_unit": "us",
+      "items_per_second": 8.44
+    },
+    {
+      "name": "MonteCarlo/Antithetic/100k_paths",
+      "iterations": 100,
+      "real_time": 4225.45,
+      "cpu_time": 4215.67,
+      "time_unit": "us",
+      "items_per_second": 236.67
+    },
+    {
+      "name": "MonteCarlo/ControlVariate/100k_paths",
+      "iterations": 80,
+      "real_time": 5340.78,
+      "cpu_time": 5328.45,
+      "time_unit": "us",
+      "items_per_second": 187.25
+    },
+    {
+      "name": "MonteCarlo/Sobol/100k_paths",
+      "iterations": 100,
+      "real_time": 3890.23,
+      "cpu_time": 3882.15,
+      "time_unit": "us",
+      "items_per_second": 257.06
+    },
+    {
+      "name": "MonteCarlo/SIMD_Vectorized/100k_paths",
+      "iterations": 100,
+      "real_time": 2145.67,
+      "cpu_time": 2138.34,
+      "time_unit": "us",
+      "items_per_second": 466.00
+    }
+  ]
+}

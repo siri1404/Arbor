@@ -59,7 +59,8 @@ else()
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=native -mtune=native")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ffast-math -funroll-loops")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -finline-functions -ftree-vectorize")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=auto -fuse-linker-plugin")
+    # LTO disabled due to Google Test compatibility issues on MinGW
+    # set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=auto -fuse-linker-plugin")
     
     # SIMD flags
     if(COMPILER_SUPPORTS_AVX2 AND HAVE_IMMINTRIN_H)
@@ -85,8 +86,8 @@ else()
         endif()
     endif()
     
-    # Link-time optimization
-    set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -flto=auto")
+    # Link-time optimization disabled due to Google Test compatibility issues on MinGW
+    # set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -flto=auto")
 endif()
 
 # ============================================================================
@@ -177,7 +178,13 @@ if(BUILD_TESTS)
             GIT_TAG v1.14.0
         )
         set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+        # Disable LTO for GTest to avoid linker issues
+        set(CMAKE_INTERPROCEDURAL_OPTIMIZATION OFF)
         FetchContent_MakeAvailable(googletest)
+        # Re-enable for rest of project if needed
+        if(CMAKE_BUILD_TYPE STREQUAL "Release")
+            set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
+        endif()
         message(STATUS "Google Test: FETCHED")
     endif()
     

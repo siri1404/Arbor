@@ -536,6 +536,23 @@ where $L_k$ are Laguerre polynomials. Early exercise occurs when immediate exerc
 - **Boundary conditions**: Edge cases (ATM, deep ITM/OTM, near-expiry)
 - **Greeks verification**: Finite difference vs analytical where available
 
+## CI/CD Pipeline
+
+Automated GitHub Actions workflows run on every commit:
+
+- **Multi-platform builds**: Ubuntu, Windows, macOS (Release & Debug)
+- **Comprehensive testing**: CTest suite with ~100+ unit tests
+- **Performance benchmarks**: Automated regression detection (>10% threshold)
+  - Order book matching latency
+  - Options pricing performance
+  - Lock-free queue throughput
+  - Monte Carlo convergence speed
+- **Sanitizers**: AddressSanitizer, ThreadSanitizer, UndefinedBehaviorSanitizer
+- **Static analysis**: cppcheck, clang-format enforcement
+- **Benchmark baseline storage**: 90-day retention for regression tracking
+
+See [CI/CD Documentation](../.github/CI_CD.md) for details.
+
 ## References
 
 - Heston, S. (1993). "A Closed-Form Solution for Options with Stochastic Volatility"

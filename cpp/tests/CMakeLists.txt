@@ -4,15 +4,21 @@ cmake_minimum_required(VERSION 3.16)
 
 enable_testing()
 
+# Disable LTO for tests to avoid linker issues with GTest
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION OFF)
+
 # Test executables
 add_executable(orderbook_test orderbook_test.cpp)
-target_link_libraries(orderbook_test PRIVATE arbor_core gtest_main)
+target_link_libraries(orderbook_test PRIVATE arbor_core gtest gtest_main)
+set_target_properties(orderbook_test PROPERTIES INTERPROCEDURAL_OPTIMIZATION OFF)
 
 add_executable(options_test options_test.cpp)
-target_link_libraries(options_test PRIVATE arbor_core gtest_main)
+target_link_libraries(options_test PRIVATE arbor_core gtest gtest_main)
+set_target_properties(options_test PROPERTIES INTERPROCEDURAL_OPTIMIZATION OFF)
 
 add_executable(montecarlo_test montecarlo_test.cpp)
-target_link_libraries(montecarlo_test PRIVATE arbor_core gtest_main)
+target_link_libraries(montecarlo_test PRIVATE arbor_core gtest gtest_main)
+set_target_properties(montecarlo_test PROPERTIES INTERPROCEDURAL_OPTIMIZATION OFF)
 
 # Lock-free data structures test (standalone, no gtest dependency)
 add_executable(lockfree_test lockfree_test.cpp)

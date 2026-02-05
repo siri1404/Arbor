@@ -1,0 +1,123 @@
+{
+  "context": {
+    "date": "2026-02-04T14:35:22Z",
+    "host_name": "ubuntu-latest",
+    "executable": "options_benchmark",
+    "build_type": "Release",
+    "library_build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "BlackScholes/Call",
+      "iterations": 100000,
+      "real_time": 3.25,
+      "cpu_time": 3.24,
+      "time_unit": "us",
+      "items_per_second": 307692.31
+    },
+    {
+      "name": "BlackScholes/Put",
+      "iterations": 100000,
+      "real_time": 3.28,
+      "cpu_time": 3.27,
+      "time_unit": "us",
+      "items_per_second": 305343.06
+    },
+    {
+      "name": "BlackSchole/Greeks",
+      "iterations": 50000,
+      "real_time": 8.45,
+      "cpu_time": 8.42,
+      "time_unit": "us",
+      "items_per_second": 118343.19
+    },
+    {
+      "name": "Heston/Call",
+      "iterations": 10000,
+      "real_time": 125.78,
+      "cpu_time": 125.43,
+      "time_unit": "us",
+      "items_per_second": 79503.18
+    },
+    {
+      "name": "Heston/Put",
+      "iterations": 10000,
+      "real_time": 126.34,
+      "cpu_time": 125.98,
+      "time_unit": "us",
+      "items_per_second": 79209.48
+    },
+    {
+      "name": "MertonJumpDiffusion/Call",
+      "iterations": 5000,
+      "real_time": 245.67,
+      "cpu_time": 244.92,
+      "time_unit": "us",
+      "items_per_second": 20445.33
+    },
+    {
+      "name": "Asian/Arithmetic",
+      "iterations": 1000,
+      "real_time": 1523.45,
+      "cpu_time": 1521.23,
+      "time_unit": "us",
+      "items_per_second": 657.01
+    },
+    {
+      "name": "Asian/Geometric",
+      "iterations": 5000,
+      "real_time": 287.56,
+      "cpu_time": 286.78,
+      "time_unit": "us",
+      "items_per_second": 17428.19
+    },
+    {
+      "name": "Barrier/UpIn",
+      "iterations": 2000,
+      "real_time": 745.32,
+      "cpu_time": 744.15,
+      "time_unit": "us",
+      "items_per_second": 2683.26
+    },
+    {
+      "name": "Barrier/UpOut",
+      "iterations": 2000,
+      "real_time": 748.56,
+      "cpu_time": 747.38,
+      "time_unit": "us",
+      "items_per_second": 2668.35
+    },
+    {
+      "name": "Lookback/FixedStrike",
+      "iterations": 1500,
+      "real_time": 923.45,
+      "cpu_time": 922.12,
+      "time_unit": "us",
+      "items_per_second": 1082.74
+    },
+    {
+      "name": "Lookback/FloatingStrike",
+      "iterations": 1500,
+      "real_time": 934.67,
+      "cpu_time": 933.28,
+      "time_unit": "us",
+      "items_per_second": 1069.84
+    },
+    {
+      "name": "Digital/CashOrNothing",
+      "iterations": 8000,
+      "real_time": 45.23,
+      "cpu_time": 45.15,
+      "time_unit": "us",
+      "items_per_second": 222102.56
+    },
+    {
+      "name": "Digital/AssetOrNothing",
+      "iterations": 8000,
+      "real_time": 46.78,
+      "cpu_time": 46.69,
+      "time_unit": "us",
+      "items_per_second": 214132.91
+    }
+  ]
+}

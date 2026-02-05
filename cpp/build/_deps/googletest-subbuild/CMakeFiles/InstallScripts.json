@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/cmake_install.cmake"
+		"C:/Users/pooja/Arbor/cpp/build/_deps/googletest-subbuild/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

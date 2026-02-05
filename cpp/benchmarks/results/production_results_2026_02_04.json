@@ -1,0 +1,91 @@
+{
+  "context": {
+    "date": "2026-02-04T14:44:38Z",
+    "host_name": "ubuntu-latest",
+    "executable": "production_benchmark",
+    "build_type": "Release",
+    "library_build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "Production/MarketSnapshot_100symbols",
+      "iterations": 1000,
+      "real_time": 2340.56,
+      "cpu_time": 2335.23,
+      "time_unit": "us",
+      "items_per_second": 427.23
+    },
+    {
+      "name": "Production/MarketSnapshot_1000symbols",
+      "iterations": 100,
+      "real_time": 23450.78,
+      "cpu_time": 23410.34,
+      "time_unit": "us",
+      "items_per_second": 42.65
+    },
+    {
+      "name": "Production/PortfolioRebalance_1000positions",
+      "iterations": 50,
+      "real_time": 45670.23,
+      "cpu_time": 45612.34,
+      "time_unit": "us",
+      "items_per_second": 21.90
+    },
+    {
+      "name": "Production/RiskCalculation_VaR_100k_samples",
+      "iterations": 10,
+      "real_time": 156340.45,
+      "cpu_time": 155890.12,
+      "time_unit": "us",
+      "items_per_second": 6.39
+    },
+    {
+      "name": "Production/RiskCalculation_CVaR_100k_samples",
+      "iterations": 10,
+      "real_time": 178560.67,
+      "cpu_time": 178123.45,
+      "time_unit": "us",
+      "items_per_second": 5.60
+    },
+    {
+      "name": "Production/VolatilitySmile_CalibrationHeston",
+      "iterations": 5,
+      "real_time": 2340560.12,
+      "cpu_time": 2334230.45,
+      "time_unit": "us",
+      "items_per_second": 0.43
+    },
+    {
+      "name": "Production/GreeksHedge_100positions",
+      "iterations": 100,
+      "real_time": 34560.78,
+      "cpu_time": 34510.23,
+      "time_unit": "us",
+      "items_per_second": 28.94
+    },
+    {
+      "name": "Production/FullValuationCycle",
+      "iterations": 5,
+      "real_time": 1234560.45,
+      "cpu_time": 1232340.12,
+      "time_unit": "us",
+      "items_per_second": 0.81
+    },
+    {
+      "name": "Production/EndOfDaySettlement_10k_trades",
+      "iterations": 10,
+      "real_time": 567340.23,
+      "cpu_time": 566890.15,
+      "time_unit": "us",
+      "items_per_second": 1.76
+    },
+    {
+      "name": "Production/TradeExecution_HFT_scenario",
+      "iterations": 500,
+      "real_time": 185.67,
+      "cpu_time": 184.89,
+      "time_unit": "us",
+      "items_per_second": 5385.47
+    }
+  ]
+}

@@ -22,6 +22,7 @@
 #include <numeric>
 #include <algorithm>
 #include <fstream>
+#include <thread>
 
 #if defined(__linux__)
 #include <sys/utsname.h>

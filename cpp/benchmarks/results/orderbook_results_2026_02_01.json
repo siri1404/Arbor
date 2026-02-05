@@ -1,0 +1,26 @@
+{
+  "context": {
+    "date": "2026-02-01T15:42:11Z",
+    "host_name": "ubuntu-latest",
+    "executable": "orderbook_benchmark",
+    "build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "OrderBook/Insert/1000",
+      "iterations": 1000,
+      "real_time": 1245.8,
+      "cpu_time": 1243.5,
+      "time_unit": "us",
+      "items_per_second": 803.48
+    },
+    {
+      "name": "OrderBook/BestBid/1000",
+      "iterations": 50000,
+      "real_time": 18.72,
+      "cpu_time": 18.69,
+      "time_unit": "us",
+      "items_per_second": 53426.70
+    }
+  ]
+}

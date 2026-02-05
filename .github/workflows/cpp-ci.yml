@@ -1,0 +1,335 @@
+name: C++ CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'cpp/**'
+      - '.github/workflows/cpp-ci.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'cpp/**'
+      - '.github/workflows/cpp-ci.yml'
+
+jobs:
+  build-and-test:
+    name: Build & Test (${{ matrix.os }}, ${{ matrix.build_type }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Release, Debug]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install dependencies (Ubuntu)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake ninja-build libtbb-dev
+
+    - name: Install dependencies (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install cmake ninja tbb
+
+    - name: Install dependencies (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        choco install cmake ninja -y
+
+    - name: Configure CMake
+      working-directory: cpp
+      run: |
+        cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+    - name: Build
+      working-directory: cpp
+      run: cmake --build build --config ${{ matrix.build_type }} -j
+
+    - name: Run Unit Tests
+      working-directory: cpp/build
+      run: ctest --output-on-failure --build-config ${{ matrix.build_type }}
+
+  benchmark:
+    name: Performance Benchmarks (Ubuntu Release)
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake ninja-build libtbb-dev
+
+    - name: Configure CMake
+      working-directory: cpp
+      run: |
+        cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build Benchmarks
+      working-directory: cpp
+      run: cmake --build build --target all -j
+
+    - name: Run Order Book Benchmarks
+      working-directory: cpp/build
+      run: |
+        ./orderbook_benchmark --benchmark_format=json --benchmark_out=orderbook_results.json
+        cat orderbook_results.json
+
+    - name: Run Options Pricing Benchmarks
+      working-directory: cpp/build
+      run: |
+        ./options_benchmark --benchmark_format=json --benchmark_out=options_results.json
+        cat options_results.json
+
+    - name: Run Lock-Free Benchmarks
+      working-directory: cpp/build
+      run: |
+        ./lockfree_benchmark --benchmark_format=json --benchmark_out=lockfree_results.json
+        cat lockfree_results.json
+
+    - name: Run Monte Carlo Benchmarks
+      working-directory: cpp/build
+      run: |
+        ./montecarlo_benchmark --benchmark_format=json --benchmark_out=montecarlo_results.json
+        cat montecarlo_results.json
+
+    - name: Run Production Benchmarks
+      working-directory: cpp/build
+      run: |
+        ./production_benchmark --benchmark_format=json --benchmark_out=production_results.json
+        cat production_results.json
+
+    - name: Upload benchmark results
+      uses: actions/upload-artifact@v4
+      with:
+        name: benchmark-results
+        path: cpp/build/*_results.json
+        retention-days: 30
+
+    - name: Download baseline benchmarks
+      uses: actions/download-artifact@v4
+      continue-on-error: true
+      with:
+        name: benchmark-baseline
+        path: cpp/build/baseline/
+
+    - name: Compare with baseline
+      id: compare
+      continue-on-error: true
+      run: |
+        python3 - <<'EOF'
+        import json
+        import os
+        import sys
+        from pathlib import Path
+
+        def load_benchmark(filepath):
+            with open(filepath) as f:
+                return json.load(f)
+
+        def compare_benchmarks(current, baseline, threshold=0.1):
+            """Compare benchmarks and flag regressions > threshold (10% default)"""
+            regressions = []
+            improvements = []
+            
+            current_map = {b['name']: b for b in current.get('benchmarks', [])}
+            baseline_map = {b['name']: b for b in baseline.get('benchmarks', [])}
+            
+            for name, curr in current_map.items():
+                if name not in baseline_map:
+                    continue
+                
+                base = baseline_map[name]
+                curr_time = curr.get('real_time', curr.get('cpu_time', 0))
+                base_time = base.get('real_time', base.get('cpu_time', 0))
+                
+                if base_time == 0:
+                    continue
+                
+                change = (curr_time - base_time) / base_time
+                
+                if change > threshold:
+                    regressions.append((name, change * 100))
+                elif change < -threshold:
+                    improvements.append((name, abs(change) * 100))
+            
+            return regressions, improvements
+
+        build_dir = Path('cpp/build')
+        baseline_dir = build_dir / 'baseline'
+        
+        has_regressions = False
+        
+        for results_file in build_dir.glob('*_results.json'):
+            baseline_file = baseline_dir / results_file.name
+            
+            if not baseline_file.exists():
+                print(f"ℹ️  No baseline for {results_file.name}, skipping comparison")
+                continue
+            
+            current = load_benchmark(results_file)
+            baseline = load_benchmark(baseline_file)
+            
+            regressions, improvements = compare_benchmarks(current, baseline)
+            
+            if regressions:
+                has_regressions = True
+                print(f"\n⚠️  PERFORMANCE REGRESSIONS in {results_file.name}:")
+                for name, pct in regressions:
+                    print(f"  - {name}: +{pct:.1f}% slower")
+            
+            if improvements:
+                print(f"\n✅ PERFORMANCE IMPROVEMENTS in {results_file.name}:")
+                for name, pct in improvements:
+                    print(f"  - {name}: {pct:.1f}% faster")
+        
+        if has_regressions:
+            print("\n❌ Performance regressions detected!")
+            sys.exit(1)
+        else:
+            print("\n✅ No significant performance regressions detected")
+        EOF
+
+    - name: Store baseline benchmarks (on main branch)
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: actions/upload-artifact@v4
+      with:
+        name: benchmark-baseline
+        path: cpp/build/*_results.json
+        retention-days: 90
+
+  sanitizers:
+    name: Sanitizers (${{ matrix.sanitizer }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sanitizer: [address, thread, undefined]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake ninja-build libtbb-dev clang-14
+
+    - name: Configure with Sanitizer
+      working-directory: cpp
+      env:
+        CC: clang-14
+        CXX: clang++-14
+      run: |
+        cmake -B build -G Ninja \
+          -DCMAKE_BUILD_TYPE=Debug \
+          -DCMAKE_CXX_FLAGS="-fsanitize=${{ matrix.sanitizer }} -fno-omit-frame-pointer -g"
+
+    - name: Build
+      working-directory: cpp
+      run: cmake --build build -j
+
+    - name: Run Tests with Sanitizer
+      working-directory: cpp/build
+      run: ctest --output-on-failure
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang-format-14 clang-tidy-14 cppcheck
+
+    - name: Check formatting
+      working-directory: cpp
+      run: |
+        find src include tests benchmarks -name "*.cpp" -o -name "*.hpp" | \
+        xargs clang-format-14 --dry-run --Werror
+
+    - name: Run cppcheck
+      working-directory: cpp
+      run: |
+        cppcheck --enable=all --suppress=missingIncludeSystem \
+          --error-exitcode=1 src/ include/
+
+  performance-report:
+    name: Generate Performance Report
+    runs-on: ubuntu-latest
+    needs: benchmark
+    if: always() && (github.event_name == 'pull_request' || github.event_name == 'push')
+    
+    steps:
+    - name: Download benchmark results
+      uses: actions/download-artifact@v4
+      with:
+        name: benchmark-results
+
+    - name: Generate report
+      run: |
+        python3 - <<'EOF'
+        import json
+        from pathlib import Path
+
+        print("# 📊 Benchmark Performance Report\n")
+        
+        for results_file in Path('.').glob('*_results.json'):
+            with open(results_file) as f:
+                data = json.load(f)
+            
+            print(f"## {results_file.stem.replace('_', ' ').title()}\n")
+            print("| Benchmark | Time | Iterations | Throughput |")
+            print("|-----------|------|------------|------------|")
+            
+            for bench in data.get('benchmarks', []):
+                name = bench['name'].split('/')[-1]
+                time = bench.get('real_time', bench.get('cpu_time', 0))
+                time_unit = bench.get('time_unit', 'ns')
+                iterations = bench.get('iterations', 0)
+                
+                # Calculate throughput
+                if 'items_per_second' in bench:
+                    throughput = f"{bench['items_per_second']:.0f} ops/s"
+                elif time > 0:
+                    ops_per_sec = 1e9 / time if time_unit == 'ns' else 1e6 / time
+                    throughput = f"{ops_per_sec:.0f} ops/s"
+                else:
+                    throughput = "N/A"
+                
+                print(f"| {name} | {time:.2f} {time_unit} | {iterations} | {throughput} |")
+            
+            print("\n")
+        EOF
+
+    - name: Comment PR with report
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const report = fs.readFileSync('report.md', 'utf8');
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: report
+          });

@@ -1,0 +1,146 @@
+{
+  "benchmark_info": {
+    "name": "Arbor Options Pricing Engine Benchmark",
+    "version": "2.0",
+    "timestamp": "2025-01-14T10:30:00Z",
+    "build_type": "Release",
+    "compiler": "GCC 14.2.0",
+    "flags": "-O3 -march=native -mavx2 -mfma -DNDEBUG",
+    "hardware": {
+      "cpu_threads": 16,
+      "simd": "AVX2 + FMA"
+    }
+  },
+  "black_scholes": {
+    "single_call": {
+      "mean_ns": 178.9,
+      "p50_ns": 200.0,
+      "p99_ns": 300.0,
+      "ops_per_sec": 5588809
+    },
+    "single_put": {
+      "mean_ns": 191.3,
+      "p50_ns": 200.0,
+      "p99_ns": 300.0,
+      "ops_per_sec": 5227965
+    },
+    "full_greeks_9_sensitivities": {
+      "mean_ns": 169.4,
+      "p50_ns": 200.0,
+      "p99_ns": 200.0,
+      "ops_per_sec": 5903815
+    },
+    "option_chain_17_strikes": {
+      "mean_ns": 4808.5,
+      "p50_ns": 4400.0,
+      "p99_ns": 8900.0,
+      "ops_per_sec": 207966
+    },
+    "implied_volatility_newton": {
+      "mean_ns": 540.8,
+      "p50_ns": 500.0,
+      "p99_ns": 600.0,
+      "ops_per_sec": 1849187
+    }
+  },
+  "merton_jump_diffusion": {
+    "analytical_50_terms": {
+      "mean_ns": 1814.4,
+      "p50_ns": 1800.0,
+      "p99_ns": 1900.0,
+      "ops_per_sec": 551149
+    },
+    "analytical_100_terms": {
+      "mean_ns": 2647.1,
+      "p50_ns": 2500.0,
+      "p99_ns": 3800.0,
+      "ops_per_sec": 377769
+    },
+    "greeks_finite_diff": {
+      "mean_ns": 19226.6,
+      "p50_ns": 15200.0,
+      "p99_ns": 31800.0,
+      "ops_per_sec": 52011
+    }
+  },
+  "heston_stochastic_vol": {
+    "quadrature_1000pts": {
+      "mean_ns": 12085368.7,
+      "p50_ns": 11231900.0,
+      "p99_ns": 17691900.0,
+      "ops_per_sec": 82.7
+    },
+    "greeks_finite_diff": {
+      "mean_ns": 97771548.5,
+      "p50_ns": 94640700.0,
+      "p99_ns": 128043300.0,
+      "ops_per_sec": 10.2
+    },
+    "characteristic_func": {
+      "mean_ns": 285.7,
+      "p50_ns": 300.0,
+      "p99_ns": 600.0,
+      "ops_per_sec": 3500273
+    }
+  },
+  "sabr_model": {
+    "implied_vol_hagan": {
+      "mean_ns": 107.8,
+      "p50_ns": 100.0,
+      "p99_ns": 200.0,
+      "ops_per_sec": 9279364
+    },
+    "full_pricing": {
+      "mean_ns": 404.1,
+      "p50_ns": 300.0,
+      "p99_ns": 800.0,
+      "ops_per_sec": 2474892
+    },
+    "vol_smile_9_strikes": {
+      "mean_ns": 535.1,
+      "p50_ns": 500.0,
+      "p99_ns": 600.0,
+      "ops_per_sec": 1868704
+    }
+  },
+  "american_options": {
+    "binomial_100_steps": {
+      "mean_ns": 130026.2,
+      "p50_ns": 107800.0,
+      "p99_ns": 290900.0,
+      "ops_per_sec": 7690.8
+    },
+    "binomial_richardson": {
+      "mean_ns": 155278.9,
+      "p50_ns": 134600.0,
+      "p99_ns": 401000.0,
+      "ops_per_sec": 6440.0
+    },
+    "binomial_500_steps": {
+      "mean_ns": 3790852.3,
+      "p50_ns": 3378000.0,
+      "p99_ns": 6204000.0,
+      "ops_per_sec": 263.8
+    },
+    "trinomial_100_steps": {
+      "mean_ns": 64611.5,
+      "p50_ns": 57300.0,
+      "p99_ns": 104200.0,
+      "ops_per_sec": 15477.1
+    }
+  },
+  "lsm_monte_carlo": {
+    "lsm_10k_paths": {
+      "mean_ms": 54.80,
+      "p99_ms": 75.58
+    },
+    "lsm_50k_paths": {
+      "mean_ms": 298.07,
+      "p99_ms": 354.08
+    },
+    "lsm_heston_20k_paths": {
+      "mean_ms": 139.69,
+      "p99_ms": 176.39
+    }
+  }
+}

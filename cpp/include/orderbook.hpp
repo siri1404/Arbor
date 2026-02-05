@@ -26,6 +26,8 @@
 
 #include <cstdint>
 #include <cstring>
+#include <cstdlib>
+#include <cmath>
 #include <array>
 #include <atomic>
 #include <chrono>
@@ -36,6 +38,7 @@
 #include <bit>
 #include <limits>
 #include <vector>
+#include <random>
 
 namespace arbor::orderbook {
 
@@ -78,6 +81,27 @@ using Nanoseconds = std::chrono::nanoseconds;
 // Branch prediction hints
 #define ARBOR_LIKELY(x) ARBOR_EXPECT(!!(x), 1)
 #define ARBOR_UNLIKELY(x) ARBOR_EXPECT(!!(x), 0)
+
+// =============================================================================
+// CROSS-PLATFORM ALIGNED MEMORY ALLOCATION
+// =============================================================================
+
+#ifdef _WIN32
+    #include <malloc.h>
+    inline void* arbor_aligned_alloc(size_t alignment, size_t size) {
+        return _aligned_malloc(size, alignment);
+    }
+    inline void arbor_aligned_free(void* ptr) {
+        _aligned_free(ptr);
+    }
+#else
+    inline void* arbor_aligned_alloc(size_t alignment, size_t size) {
+        return std::aligned_alloc(alignment, size);
+    }
+    inline void arbor_aligned_free(void* ptr) {
+        std::free(ptr);
+    }
+#endif
 
 // =============================================================================
 // ENUMS
@@ -363,7 +387,7 @@ class SlabAllocator {
 public:
     SlabAllocator() {
         // Allocate contiguous memory block
-        storage_ = static_cast<T*>(std::aligned_alloc(alignof(T), sizeof(T) * Capacity));
+        storage_ = static_cast<T*>(arbor_aligned_alloc(alignof(T), sizeof(T) * Capacity));
         if (!storage_) {
             throw std::bad_alloc();
         }
@@ -379,7 +403,7 @@ public:
     
     ~SlabAllocator() {
         if (storage_) {
-            std::free(storage_);
+            arbor_aligned_free(storage_);
         }
     }
     

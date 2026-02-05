@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=git
-command=C:/Program Files/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/tmp/googletest-populate-gitclone.cmake
-source_dir=C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps/googletest-src
-work_dir=C:/Users/pooja/Downloads/market-prophet-ai-platform/cpp/build/_deps
+command=C:/Program Files/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;C:/Users/pooja/Arbor/cpp/build/_deps/googletest-subbuild/googletest-populate-prefix/tmp/googletest-populate-gitclone.cmake
+source_dir=C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src
+work_dir=C:/Users/pooja/Arbor/cpp/build/_deps
 repository=https://github.com/google/googletest.git
 remote=origin
 init_submodules=TRUE

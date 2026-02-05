@@ -1,0 +1,104 @@
+[
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\arbor_core.dir\\src\\orderbook.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\src\\orderbook.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/src/orderbook.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/arbor_core.dir/src/orderbook.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\arbor_core.dir\\src\\options_pricing.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\src\\options_pricing.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/src/options_pricing.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/arbor_core.dir/src/options_pricing.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\arbor_core.dir\\src\\monte_carlo.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\src\\monte_carlo.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/src/monte_carlo.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/arbor_core.dir/src/monte_carlo.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\arbor_core.dir\\src\\technical_indicators.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\src\\technical_indicators.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/src/technical_indicators.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/arbor_core.dir/src/technical_indicators.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\arbor_core.dir\\src\\market_data_parser.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\src\\market_data_parser.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/src/market_data_parser.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/arbor_core.dir/src/market_data_parser.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\orderbook_bench.dir\\benchmarks\\orderbook_benchmark.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\benchmarks\\orderbook_benchmark.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/benchmarks/orderbook_benchmark.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/orderbook_bench.dir/benchmarks/orderbook_benchmark.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\options_bench.dir\\benchmarks\\options_benchmark.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\benchmarks\\options_benchmark.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/benchmarks/options_benchmark.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/options_bench.dir/benchmarks/options_benchmark.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\montecarlo_bench.dir\\benchmarks\\montecarlo_benchmark.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\benchmarks\\montecarlo_benchmark.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/benchmarks/montecarlo_benchmark.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/montecarlo_bench.dir/benchmarks/montecarlo_benchmark.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o CMakeFiles\\lockfree_bench.dir\\benchmarks\\lockfree_benchmark.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\benchmarks\\lockfree_benchmark.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/benchmarks/lockfree_benchmark.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/CMakeFiles/lockfree_bench.dir/benchmarks/lockfree_benchmark.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -IC:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googlemock/include -IC:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googlemock -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps\\googletest-build\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c C:\\Users\\pooja\\Arbor\\cpp\\build\\_deps\\googletest-src\\googlemock\\src\\gmock-all.cc",
+  "file": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googlemock/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googlemock -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps\\googletest-build\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\Users\\pooja\\Arbor\\cpp\\build\\_deps\\googletest-src\\googlemock\\src\\gmock_main.cc",
+  "file": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -IC:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -IC:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps\\googletest-build\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c C:\\Users\\pooja\\Arbor\\cpp\\build\\_deps\\googletest-src\\googletest\\src\\gtest-all.cc",
+  "file": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps\\googletest-build\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c C:\\Users\\pooja\\Arbor\\cpp\\build\\_deps\\googletest-src\\googletest\\src\\gtest_main.cc",
+  "file": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "C:/Users/pooja/Arbor/cpp/build/_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o tests\\CMakeFiles\\orderbook_test.dir\\orderbook_test.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\tests\\orderbook_test.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/tests/orderbook_test.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/tests/CMakeFiles/orderbook_test.dir/orderbook_test.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o tests\\CMakeFiles\\options_test.dir\\options_test.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\tests\\options_test.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/tests/options_test.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/tests/CMakeFiles/options_test.dir/options_test.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest/include -isystem C:/Users/pooja/Arbor/cpp/build/_deps/googletest-src/googletest  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -o tests\\CMakeFiles\\montecarlo_test.dir\\montecarlo_test.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\tests\\montecarlo_test.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/tests/montecarlo_test.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/tests/CMakeFiles/montecarlo_test.dir/montecarlo_test.cpp.obj"
+},
+{
+  "directory": "C:/Users/pooja/Arbor/cpp/build",
+  "command": "C:\\Users\\pooja\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT.LLVM_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\c++.exe -DARBOR_AVX2_ENABLED -DARBOR_FMA_ENABLED -IC:/Users/pooja/Arbor/cpp/include  -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wno-unused-parameter -Wno-missing-field-initializers -O3 -DNDEBUG -O3 -DNDEBUG -march=native -mtune=native -ffast-math -funroll-loops -finline-functions -ftree-vectorize -mavx2 -mfma -std=c++20 -pthread -o tests\\CMakeFiles\\lockfree_test.dir\\lockfree_test.cpp.obj -c C:\\Users\\pooja\\Arbor\\cpp\\tests\\lockfree_test.cpp",
+  "file": "C:/Users/pooja/Arbor/cpp/tests/lockfree_test.cpp",
+  "output": "C:/Users/pooja/Arbor/cpp/build/tests/CMakeFiles/lockfree_test.dir/lockfree_test.cpp.obj"
+}
+]

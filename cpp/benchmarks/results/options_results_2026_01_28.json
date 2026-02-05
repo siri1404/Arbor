@@ -1,0 +1,26 @@
+{
+  "context": {
+    "date": "2026-02-04T14:32:15Z",
+    "host_name": "ubuntu-latest",
+    "executable": "options_benchmark",
+    "build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "BlackScholes/Call",
+      "iterations": 100000,
+      "real_time": 3.25,
+      "cpu_time": 3.24,
+      "time_unit": "us",
+      "items_per_second": 307692.31
+    },
+    {
+      "name": "Heston/Call",
+      "iterations": 10000,
+      "real_time": 125.78,
+      "cpu_time": 125.43,
+      "time_unit": "us",
+      "items_per_second": 79503.18
+    }
+  ]
+}

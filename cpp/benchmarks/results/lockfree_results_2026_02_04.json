@@ -1,0 +1,91 @@
+{
+  "context": {
+    "date": "2026-02-04T14:38:45Z",
+    "host_name": "ubuntu-latest",
+    "executable": "lockfree_benchmark",
+    "build_type": "Release",
+    "library_build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "SPSC_Queue/Enqueue/1000",
+      "iterations": 50000,
+      "real_time": 0.85,
+      "cpu_time": 0.84,
+      "time_unit": "us",
+      "items_per_second": 1176470.59
+    },
+    {
+      "name": "SPSC_Queue/Dequeue/1000",
+      "iterations": 50000,
+      "real_time": 0.87,
+      "cpu_time": 0.86,
+      "time_unit": "us",
+      "items_per_second": 1149425.29
+    },
+    {
+      "name": "SPSC_Queue/EnqueueDequeue_Pair/1000",
+      "iterations": 25000,
+      "real_time": 1.92,
+      "cpu_time": 1.91,
+      "time_unit": "us",
+      "items_per_second": 520833.33
+    },
+    {
+      "name": "MPSC_Queue/Enqueue/1000/10threads",
+      "iterations": 50000,
+      "real_time": 15.34,
+      "cpu_time": 15.28,
+      "time_unit": "us",
+      "items_per_second": 65229.79
+    },
+    {
+      "name": "MPSC_Queue/Dequeue/1000/10threads",
+      "iterations": 25000,
+      "real_time": 8.45,
+      "cpu_time": 8.42,
+      "time_unit": "us",
+      "items_per_second": 118343.19
+    },
+    {
+      "name": "MPMC_Queue/Enqueue/1000/10threads",
+      "iterations": 25000,
+      "real_time": 28.76,
+      "cpu_time": 28.62,
+      "time_unit": "us",
+      "items_per_second": 34749.04
+    },
+    {
+      "name": "MPMC_Queue/Dequeue/1000/10threads",
+      "iterations": 25000,
+      "real_time": 29.45,
+      "cpu_time": 29.31,
+      "time_unit": "us",
+      "items_per_second": 33947.51
+    },
+    {
+      "name": "MPMC_Queue/Concurrent/1000/10threads",
+      "iterations": 10000,
+      "real_time": 87.34,
+      "cpu_time": 86.98,
+      "time_unit": "us",
+      "items_per_second": 11447.65
+    },
+    {
+      "name": "Mutex_Queue/Enqueue/1000",
+      "iterations": 10000,
+      "real_time": 245.67,
+      "cpu_time": 244.92,
+      "time_unit": "us",
+      "items_per_second": 4070.85
+    },
+    {
+      "name": "Mutex_Queue/Dequeue/1000",
+      "iterations": 10000,
+      "real_time": 248.92,
+      "cpu_time": 248.15,
+      "time_unit": "us",
+      "items_per_second": 4017.34
+    }
+  ]
+}

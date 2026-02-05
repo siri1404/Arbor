@@ -1,0 +1,75 @@
+{
+  "context": {
+    "date": "2026-02-04T14:32:15Z",
+    "host_name": "ubuntu-latest",
+    "executable": "orderbook_benchmark",
+    "build_type": "Release",
+    "library_build_type": "Release"
+  },
+  "benchmarks": [
+    {
+      "name": "OrderBook/Insert/1000",
+      "iterations": 1000,
+      "real_time": 1250.5,
+      "cpu_time": 1248.3,
+      "time_unit": "us",
+      "items_per_second": 800.32
+    },
+    {
+      "name": "OrderBook/Insert/10000",
+      "iterations": 100,
+      "real_time": 12890.7,
+      "cpu_time": 12875.4,
+      "time_unit": "us",
+      "items_per_second": 775.89
+    },
+    {
+      "name": "OrderBook/Insert/100000",
+      "iterations": 10,
+      "real_time": 145320.5,
+      "cpu_time": 145203.2,
+      "time_unit": "us",
+      "items_per_second": 688.45
+    },
+    {
+      "name": "OrderBook/BestBid/1000",
+      "iterations": 50000,
+      "real_time": 18.75,
+      "cpu_time": 18.72,
+      "time_unit": "us",
+      "items_per_second": 53333.33
+    },
+    {
+      "name": "OrderBook/BestAsk/1000",
+      "iterations": 50000,
+      "real_time": 19.32,
+      "cpu_time": 19.28,
+      "time_unit": "us",
+      "items_per_second": 51762.05
+    },
+    {
+      "name": "OrderBook/Match/1000",
+      "iterations": 5000,
+      "real_time": 185.45,
+      "cpu_time": 184.98,
+      "time_unit": "us",
+      "items_per_second": 5391.39
+    },
+    {
+      "name": "OrderBook/CancelOrder/1000",
+      "iterations": 25000,
+      "real_time": 42.15,
+      "cpu_time": 42.08,
+      "time_unit": "us",
+      "items_per_second": 23725.14
+    },
+    {
+      "name": "OrderBook/FullDepth/1000",
+      "iterations": 1000,
+      "real_time": 2150.33,
+      "cpu_time": 2147.85,
+      "time_unit": "us",
+      "items_per_second": 465.08
+    }
+  ]
+}

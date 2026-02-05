@@ -1,0 +1,2353 @@
+Start testing: Feb 04 20:27 Eastern Standard Time
+----------------------------------------------------------
+1/90 Testing: OrderBookTest.BasicOrderInsertion
+1/90 Test: OrderBookTest.BasicOrderInsertion
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.BasicOrderInsertion" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.BasicOrderInsertion" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.BasicOrderInsertion
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.BasicOrderInsertion
+[       OK ] OrderBookTest.BasicOrderInsertion (12 ms)
+[----------] 1 test from OrderBookTest (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (12 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.BasicOrderInsertion" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.BasicOrderInsertion" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/90 Testing: OrderBookTest.BothSidesOfBook
+2/90 Test: OrderBookTest.BothSidesOfBook
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.BothSidesOfBook" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.BothSidesOfBook" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.BothSidesOfBook
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.BothSidesOfBook
+[       OK ] OrderBookTest.BothSidesOfBook (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (12 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.BothSidesOfBook" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.BothSidesOfBook" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/90 Testing: OrderBookTest.MatchingOrders
+3/90 Test: OrderBookTest.MatchingOrders
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.MatchingOrders" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.MatchingOrders" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.MatchingOrders
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.MatchingOrders
+[       OK ] OrderBookTest.MatchingOrders (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.MatchingOrders" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.MatchingOrders" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/90 Testing: OrderBookTest.PriceTimePriority
+4/90 Test: OrderBookTest.PriceTimePriority
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.PriceTimePriority" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.PriceTimePriority" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.PriceTimePriority
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.PriceTimePriority
+[       OK ] OrderBookTest.PriceTimePriority (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.PriceTimePriority" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.PriceTimePriority" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/90 Testing: OrderBookTest.PricePriority
+5/90 Test: OrderBookTest.PricePriority
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.PricePriority" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.PricePriority" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.PricePriority
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.PricePriority
+[       OK ] OrderBookTest.PricePriority (13 ms)
+[----------] 1 test from OrderBookTest (13 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (13 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.PricePriority" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.PricePriority" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/90 Testing: OrderBookTest.MarketOrder
+6/90 Test: OrderBookTest.MarketOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.MarketOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.MarketOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.MarketOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.MarketOrder
+[       OK ] OrderBookTest.MarketOrder (10 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.MarketOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.MarketOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/90 Testing: OrderBookTest.IOCOrder
+7/90 Test: OrderBookTest.IOCOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.IOCOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.IOCOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.IOCOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.IOCOrder
+[       OK ] OrderBookTest.IOCOrder (10 ms)
+[----------] 1 test from OrderBookTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.IOCOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.IOCOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/90 Testing: OrderBookTest.FOKOrderFilled
+8/90 Test: OrderBookTest.FOKOrderFilled
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.FOKOrderFilled" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.FOKOrderFilled" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.FOKOrderFilled
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.FOKOrderFilled
+[       OK ] OrderBookTest.FOKOrderFilled (10 ms)
+[----------] 1 test from OrderBookTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.FOKOrderFilled" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.FOKOrderFilled" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/90 Testing: OrderBookTest.FOKOrderRejected
+9/90 Test: OrderBookTest.FOKOrderRejected
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.FOKOrderRejected" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.FOKOrderRejected" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.FOKOrderRejected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.FOKOrderRejected
+[       OK ] OrderBookTest.FOKOrderRejected (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.FOKOrderRejected" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.FOKOrderRejected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/90 Testing: OrderBookTest.CancelOrder
+10/90 Test: OrderBookTest.CancelOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.CancelOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.CancelOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.CancelOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.CancelOrder
+[       OK ] OrderBookTest.CancelOrder (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.CancelOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.CancelOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/90 Testing: OrderBookTest.CancelNonExistentOrder
+11/90 Test: OrderBookTest.CancelNonExistentOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.CancelNonExistentOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.CancelNonExistentOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.CancelNonExistentOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.CancelNonExistentOrder
+[       OK ] OrderBookTest.CancelNonExistentOrder (10 ms)
+[----------] 1 test from OrderBookTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.CancelNonExistentOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.CancelNonExistentOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/90 Testing: OrderBookTest.CancelAlreadyFilledOrder
+12/90 Test: OrderBookTest.CancelAlreadyFilledOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.CancelAlreadyFilledOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.CancelAlreadyFilledOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.CancelAlreadyFilledOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.CancelAlreadyFilledOrder
+[       OK ] OrderBookTest.CancelAlreadyFilledOrder (13 ms)
+[----------] 1 test from OrderBookTest (13 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (13 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.CancelAlreadyFilledOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.CancelAlreadyFilledOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/90 Testing: OrderBookTest.CancelPartiallyFilledOrder
+13/90 Test: OrderBookTest.CancelPartiallyFilledOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.CancelPartiallyFilledOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.CancelPartiallyFilledOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.CancelPartiallyFilledOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.CancelPartiallyFilledOrder
+[       OK ] OrderBookTest.CancelPartiallyFilledOrder (14 ms)
+[----------] 1 test from OrderBookTest (14 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (15 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.CancelPartiallyFilledOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.CancelPartiallyFilledOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/90 Testing: OrderBookTest.ModifyQuantityDown
+14/90 Test: OrderBookTest.ModifyQuantityDown
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.ModifyQuantityDown" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.ModifyQuantityDown" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.ModifyQuantityDown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.ModifyQuantityDown
+[       OK ] OrderBookTest.ModifyQuantityDown (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.ModifyQuantityDown" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.ModifyQuantityDown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/90 Testing: OrderBookTest.ModifyPriceChangesOrder
+15/90 Test: OrderBookTest.ModifyPriceChangesOrder
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.ModifyPriceChangesOrder" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.ModifyPriceChangesOrder" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.ModifyPriceChangesOrder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.ModifyPriceChangesOrder
+[       OK ] OrderBookTest.ModifyPriceChangesOrder (10 ms)
+[----------] 1 test from OrderBookTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.ModifyPriceChangesOrder" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.ModifyPriceChangesOrder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/90 Testing: OrderBookTest.CancelMiddleOrderO1
+16/90 Test: OrderBookTest.CancelMiddleOrderO1
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.CancelMiddleOrderO1" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.CancelMiddleOrderO1" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.CancelMiddleOrderO1
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.CancelMiddleOrderO1
+[       OK ] OrderBookTest.CancelMiddleOrderO1 (11 ms)
+[----------] 1 test from OrderBookTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.CancelMiddleOrderO1" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.CancelMiddleOrderO1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/90 Testing: OrderBookTest.MultiplePriceLevels
+17/90 Test: OrderBookTest.MultiplePriceLevels
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.MultiplePriceLevels" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.MultiplePriceLevels" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.MultiplePriceLevels
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.MultiplePriceLevels
+[       OK ] OrderBookTest.MultiplePriceLevels (10 ms)
+[----------] 1 test from OrderBookTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.MultiplePriceLevels" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.MultiplePriceLevels" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/90 Testing: OrderBookTest.PriceLevelRemoval
+18/90 Test: OrderBookTest.PriceLevelRemoval
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.PriceLevelRemoval" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.PriceLevelRemoval" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.PriceLevelRemoval
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.PriceLevelRemoval
+[       OK ] OrderBookTest.PriceLevelRemoval (14 ms)
+[----------] 1 test from OrderBookTest (14 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (14 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.PriceLevelRemoval" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.PriceLevelRemoval" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/90 Testing: OrderBookTest.SlabAllocatorNoMalloc
+19/90 Test: OrderBookTest.SlabAllocatorNoMalloc
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.SlabAllocatorNoMalloc" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.SlabAllocatorNoMalloc" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.SlabAllocatorNoMalloc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.SlabAllocatorNoMalloc
+[       OK ] OrderBookTest.SlabAllocatorNoMalloc (25 ms)
+[----------] 1 test from OrderBookTest (25 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (25 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.SlabAllocatorNoMalloc" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.SlabAllocatorNoMalloc" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/90 Testing: OrderBookTest.LatencyTracking
+20/90 Test: OrderBookTest.LatencyTracking
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.LatencyTracking" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.LatencyTracking" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.LatencyTracking
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.LatencyTracking
+[       OK ] OrderBookTest.LatencyTracking (15 ms)
+[----------] 1 test from OrderBookTest (15 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (15 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.LatencyTracking" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.LatencyTracking" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/90 Testing: OrderBookTest.LatencyPercentiles
+21/90 Test: OrderBookTest.LatencyPercentiles
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.LatencyPercentiles" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.LatencyPercentiles" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.LatencyPercentiles
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.LatencyPercentiles
+[       OK ] OrderBookTest.LatencyPercentiles (21 ms)
+[----------] 1 test from OrderBookTest (21 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (21 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.LatencyPercentiles" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.LatencyPercentiles" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/90 Testing: OrderBookTest.HighVolumeOrders
+22/90 Test: OrderBookTest.HighVolumeOrders
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.HighVolumeOrders" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.HighVolumeOrders" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.HighVolumeOrders
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.HighVolumeOrders
+[       OK ] OrderBookTest.HighVolumeOrders (61 ms)
+[----------] 1 test from OrderBookTest (61 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (61 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.HighVolumeOrders" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.HighVolumeOrders" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/90 Testing: OrderBookTest.CancelStress
+23/90 Test: OrderBookTest.CancelStress
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.CancelStress" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.CancelStress" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.CancelStress
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.CancelStress
+[       OK ] OrderBookTest.CancelStress (16 ms)
+[----------] 1 test from OrderBookTest (16 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (16 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.CancelStress" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.CancelStress" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/90 Testing: OrderBookTest.TradeCallback
+24/90 Test: OrderBookTest.TradeCallback
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.TradeCallback" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.TradeCallback" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.TradeCallback
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.TradeCallback
+[       OK ] OrderBookTest.TradeCallback (12 ms)
+[----------] 1 test from OrderBookTest (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (12 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.TradeCallback" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.TradeCallback" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/90 Testing: OrderBookTest.ZeroQuantityRejected
+25/90 Test: OrderBookTest.ZeroQuantityRejected
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.ZeroQuantityRejected" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.ZeroQuantityRejected" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.ZeroQuantityRejected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.ZeroQuantityRejected
+[       OK ] OrderBookTest.ZeroQuantityRejected (19 ms)
+[----------] 1 test from OrderBookTest (19 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (19 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.ZeroQuantityRejected" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.ZeroQuantityRejected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/90 Testing: OrderBookTest.EmptyBookQueries
+26/90 Test: OrderBookTest.EmptyBookQueries
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.EmptyBookQueries" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.EmptyBookQueries" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.EmptyBookQueries
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.EmptyBookQueries
+[       OK ] OrderBookTest.EmptyBookQueries (12 ms)
+[----------] 1 test from OrderBookTest (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (12 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.EmptyBookQueries" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.EmptyBookQueries" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/90 Testing: OrderBookTest.SelfTradePrevention
+27/90 Test: OrderBookTest.SelfTradePrevention
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/orderbook_test.exe" "--gtest_filter=OrderBookTest.SelfTradePrevention" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"OrderBookTest.SelfTradePrevention" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = OrderBookTest.SelfTradePrevention
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from OrderBookTest
+[ RUN      ] OrderBookTest.SelfTradePrevention
+[       OK ] OrderBookTest.SelfTradePrevention (15 ms)
+[----------] 1 test from OrderBookTest (15 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (16 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"OrderBookTest.SelfTradePrevention" end time: Feb 04 20:27 Eastern Standard Time
+"OrderBookTest.SelfTradePrevention" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/90 Testing: BlackScholesTest.ATMCallPrice
+28/90 Test: BlackScholesTest.ATMCallPrice
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.ATMCallPrice" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.ATMCallPrice" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.ATMCallPrice
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.ATMCallPrice
+[       OK ] BlackScholesTest.ATMCallPrice (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.ATMCallPrice" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.ATMCallPrice" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/90 Testing: BlackScholesTest.ATMPutPrice
+29/90 Test: BlackScholesTest.ATMPutPrice
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.ATMPutPrice" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.ATMPutPrice" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.ATMPutPrice
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.ATMPutPrice
+C:/Users/pooja/Arbor/cpp/tests/options_test.cpp:41: Failure
+Expected: (result.greeks.delta) > (-0.5), actual: -0.62740939556081843 vs -0.5
+
+[  FAILED  ] BlackScholesTest.ATMPutPrice (3 ms)
+[----------] 1 test from BlackScholesTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] BlackScholesTest.ATMPutPrice
+
+ 1 FAILED TEST
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Failed.
+"BlackScholesTest.ATMPutPrice" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.ATMPutPrice" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/90 Testing: BlackScholesTest.PutCallParity
+30/90 Test: BlackScholesTest.PutCallParity
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.PutCallParity" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.PutCallParity" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.PutCallParity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.PutCallParity
+[       OK ] BlackScholesTest.PutCallParity (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.PutCallParity" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.PutCallParity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/90 Testing: BlackScholesTest.DeepITMCall
+31/90 Test: BlackScholesTest.DeepITMCall
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.DeepITMCall" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.DeepITMCall" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.DeepITMCall
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.DeepITMCall
+[       OK ] BlackScholesTest.DeepITMCall (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.DeepITMCall" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.DeepITMCall" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/90 Testing: BlackScholesTest.DeepOTMCall
+32/90 Test: BlackScholesTest.DeepOTMCall
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.DeepOTMCall" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.DeepOTMCall" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.DeepOTMCall
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.DeepOTMCall
+[       OK ] BlackScholesTest.DeepOTMCall (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.DeepOTMCall" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.DeepOTMCall" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/90 Testing: BlackScholesTest.HigherOrderGreeks
+33/90 Test: BlackScholesTest.HigherOrderGreeks
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.HigherOrderGreeks" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.HigherOrderGreeks" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.HigherOrderGreeks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.HigherOrderGreeks
+[       OK ] BlackScholesTest.HigherOrderGreeks (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.HigherOrderGreeks" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.HigherOrderGreeks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/90 Testing: BlackScholesTest.ImpliedVolatilityRoundtrip
+34/90 Test: BlackScholesTest.ImpliedVolatilityRoundtrip
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.ImpliedVolatilityRoundtrip" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.ImpliedVolatilityRoundtrip" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.ImpliedVolatilityRoundtrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.ImpliedVolatilityRoundtrip
+[       OK ] BlackScholesTest.ImpliedVolatilityRoundtrip (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.ImpliedVolatilityRoundtrip" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.ImpliedVolatilityRoundtrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/90 Testing: BlackScholesTest.ImpliedVolatilityOTM
+35/90 Test: BlackScholesTest.ImpliedVolatilityOTM
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.ImpliedVolatilityOTM" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.ImpliedVolatilityOTM" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.ImpliedVolatilityOTM
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.ImpliedVolatilityOTM
+[       OK ] BlackScholesTest.ImpliedVolatilityOTM (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.ImpliedVolatilityOTM" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.ImpliedVolatilityOTM" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/90 Testing: BlackScholesTest.ExpiredOption
+36/90 Test: BlackScholesTest.ExpiredOption
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.ExpiredOption" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.ExpiredOption" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.ExpiredOption
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.ExpiredOption
+[       OK ] BlackScholesTest.ExpiredOption (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.ExpiredOption" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.ExpiredOption" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/90 Testing: BlackScholesTest.OptionChain
+37/90 Test: BlackScholesTest.OptionChain
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BlackScholesTest.OptionChain" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BlackScholesTest.OptionChain" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BlackScholesTest.OptionChain
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BlackScholesTest
+[ RUN      ] BlackScholesTest.OptionChain
+[       OK ] BlackScholesTest.OptionChain (0 ms)
+[----------] 1 test from BlackScholesTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"BlackScholesTest.OptionChain" end time: Feb 04 20:27 Eastern Standard Time
+"BlackScholesTest.OptionChain" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/90 Testing: MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps
+38/90 Test: MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MertonJumpDiffusionTest
+[ RUN      ] MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps
+[       OK ] MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps (0 ms)
+[----------] 1 test from MertonJumpDiffusionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps" end time: Feb 04 20:27 Eastern Standard Time
+"MertonJumpDiffusionTest.ConvergesToBSWhenNoJumps" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/90 Testing: MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher
+39/90 Test: MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MertonJumpDiffusionTest
+[ RUN      ] MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher
+[       OK ] MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher (0 ms)
+[----------] 1 test from MertonJumpDiffusionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher" end time: Feb 04 20:27 Eastern Standard Time
+"MertonJumpDiffusionTest.JumpsPriceOTMOptionsHigher" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/90 Testing: MertonJumpDiffusionTest.PutCallParityHolds
+40/90 Test: MertonJumpDiffusionTest.PutCallParityHolds
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MertonJumpDiffusionTest.PutCallParityHolds" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MertonJumpDiffusionTest.PutCallParityHolds" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MertonJumpDiffusionTest.PutCallParityHolds
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MertonJumpDiffusionTest
+[ RUN      ] MertonJumpDiffusionTest.PutCallParityHolds
+C:/Users/pooja/Arbor/cpp/tests/options_test.cpp:185: Failure
+The difference between parity_diff and expected is 0.30504386359203917, which exceeds 0.1, where
+parity_diff evaluates to 4.5720136863365548,
+expected evaluates to 4.877057549928594, and
+0.1 evaluates to 0.10000000000000001.
+
+[  FAILED  ] MertonJumpDiffusionTest.PutCallParityHolds (0 ms)
+[----------] 1 test from MertonJumpDiffusionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] MertonJumpDiffusionTest.PutCallParityHolds
+
+ 1 FAILED TEST
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Failed.
+"MertonJumpDiffusionTest.PutCallParityHolds" end time: Feb 04 20:27 Eastern Standard Time
+"MertonJumpDiffusionTest.PutCallParityHolds" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/90 Testing: MertonJumpDiffusionTest.GreeksFiniteDifference
+41/90 Test: MertonJumpDiffusionTest.GreeksFiniteDifference
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MertonJumpDiffusionTest.GreeksFiniteDifference" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MertonJumpDiffusionTest.GreeksFiniteDifference" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MertonJumpDiffusionTest.GreeksFiniteDifference
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MertonJumpDiffusionTest
+[ RUN      ] MertonJumpDiffusionTest.GreeksFiniteDifference
+[       OK ] MertonJumpDiffusionTest.GreeksFiniteDifference (0 ms)
+[----------] 1 test from MertonJumpDiffusionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"MertonJumpDiffusionTest.GreeksFiniteDifference" end time: Feb 04 20:27 Eastern Standard Time
+"MertonJumpDiffusionTest.GreeksFiniteDifference" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/90 Testing: MertonJumpDiffusionTest.SeriesConvergence
+42/90 Test: MertonJumpDiffusionTest.SeriesConvergence
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MertonJumpDiffusionTest.SeriesConvergence" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MertonJumpDiffusionTest.SeriesConvergence" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MertonJumpDiffusionTest.SeriesConvergence
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MertonJumpDiffusionTest
+[ RUN      ] MertonJumpDiffusionTest.SeriesConvergence
+[       OK ] MertonJumpDiffusionTest.SeriesConvergence (0 ms)
+[----------] 1 test from MertonJumpDiffusionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MertonJumpDiffusionTest.SeriesConvergence" end time: Feb 04 20:27 Eastern Standard Time
+"MertonJumpDiffusionTest.SeriesConvergence" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/90 Testing: HestonModelTest.FellerCondition
+43/90 Test: HestonModelTest.FellerCondition
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=HestonModelTest.FellerCondition" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"HestonModelTest.FellerCondition" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = HestonModelTest.FellerCondition
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HestonModelTest
+[ RUN      ] HestonModelTest.FellerCondition
+[       OK ] HestonModelTest.FellerCondition (0 ms)
+[----------] 1 test from HestonModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"HestonModelTest.FellerCondition" end time: Feb 04 20:27 Eastern Standard Time
+"HestonModelTest.FellerCondition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/90 Testing: HestonModelTest.ConvergesToBSWhenNoVolOfVol
+44/90 Test: HestonModelTest.ConvergesToBSWhenNoVolOfVol
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=HestonModelTest.ConvergesToBSWhenNoVolOfVol" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"HestonModelTest.ConvergesToBSWhenNoVolOfVol" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = HestonModelTest.ConvergesToBSWhenNoVolOfVol
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HestonModelTest
+[ RUN      ] HestonModelTest.ConvergesToBSWhenNoVolOfVol
+[       OK ] HestonModelTest.ConvergesToBSWhenNoVolOfVol (10 ms)
+[----------] 1 test from HestonModelTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (10 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"HestonModelTest.ConvergesToBSWhenNoVolOfVol" end time: Feb 04 20:27 Eastern Standard Time
+"HestonModelTest.ConvergesToBSWhenNoVolOfVol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/90 Testing: HestonModelTest.NegativeCorrelationSkew
+45/90 Test: HestonModelTest.NegativeCorrelationSkew
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=HestonModelTest.NegativeCorrelationSkew" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"HestonModelTest.NegativeCorrelationSkew" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = HestonModelTest.NegativeCorrelationSkew
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HestonModelTest
+[ RUN      ] HestonModelTest.NegativeCorrelationSkew
+[       OK ] HestonModelTest.NegativeCorrelationSkew (21 ms)
+[----------] 1 test from HestonModelTest (21 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (21 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"HestonModelTest.NegativeCorrelationSkew" end time: Feb 04 20:27 Eastern Standard Time
+"HestonModelTest.NegativeCorrelationSkew" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/90 Testing: HestonModelTest.CharacteristicFunctionNormalized
+46/90 Test: HestonModelTest.CharacteristicFunctionNormalized
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=HestonModelTest.CharacteristicFunctionNormalized" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"HestonModelTest.CharacteristicFunctionNormalized" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = HestonModelTest.CharacteristicFunctionNormalized
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HestonModelTest
+[ RUN      ] HestonModelTest.CharacteristicFunctionNormalized
+[       OK ] HestonModelTest.CharacteristicFunctionNormalized (0 ms)
+[----------] 1 test from HestonModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"HestonModelTest.CharacteristicFunctionNormalized" end time: Feb 04 20:27 Eastern Standard Time
+"HestonModelTest.CharacteristicFunctionNormalized" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/90 Testing: HestonModelTest.PutCallParity
+47/90 Test: HestonModelTest.PutCallParity
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=HestonModelTest.PutCallParity" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"HestonModelTest.PutCallParity" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = HestonModelTest.PutCallParity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HestonModelTest
+[ RUN      ] HestonModelTest.PutCallParity
+[       OK ] HestonModelTest.PutCallParity (21 ms)
+[----------] 1 test from HestonModelTest (21 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (21 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"HestonModelTest.PutCallParity" end time: Feb 04 20:27 Eastern Standard Time
+"HestonModelTest.PutCallParity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/90 Testing: HestonModelTest.GreeksComputation
+48/90 Test: HestonModelTest.GreeksComputation
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=HestonModelTest.GreeksComputation" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"HestonModelTest.GreeksComputation" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = HestonModelTest.GreeksComputation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HestonModelTest
+[ RUN      ] HestonModelTest.GreeksComputation
+[       OK ] HestonModelTest.GreeksComputation (87 ms)
+[----------] 1 test from HestonModelTest (87 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (87 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"HestonModelTest.GreeksComputation" end time: Feb 04 20:27 Eastern Standard Time
+"HestonModelTest.GreeksComputation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/90 Testing: SABRModelTest.ATMVolApproximation
+49/90 Test: SABRModelTest.ATMVolApproximation
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=SABRModelTest.ATMVolApproximation" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"SABRModelTest.ATMVolApproximation" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SABRModelTest.ATMVolApproximation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SABRModelTest
+[ RUN      ] SABRModelTest.ATMVolApproximation
+[       OK ] SABRModelTest.ATMVolApproximation (0 ms)
+[----------] 1 test from SABRModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SABRModelTest.ATMVolApproximation" end time: Feb 04 20:27 Eastern Standard Time
+"SABRModelTest.ATMVolApproximation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/90 Testing: SABRModelTest.VolSmileShape
+50/90 Test: SABRModelTest.VolSmileShape
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=SABRModelTest.VolSmileShape" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"SABRModelTest.VolSmileShape" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SABRModelTest.VolSmileShape
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SABRModelTest
+[ RUN      ] SABRModelTest.VolSmileShape
+[       OK ] SABRModelTest.VolSmileShape (0 ms)
+[----------] 1 test from SABRModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SABRModelTest.VolSmileShape" end time: Feb 04 20:27 Eastern Standard Time
+"SABRModelTest.VolSmileShape" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/90 Testing: SABRModelTest.BetaZeroNormal
+51/90 Test: SABRModelTest.BetaZeroNormal
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=SABRModelTest.BetaZeroNormal" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"SABRModelTest.BetaZeroNormal" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SABRModelTest.BetaZeroNormal
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SABRModelTest
+[ RUN      ] SABRModelTest.BetaZeroNormal
+[       OK ] SABRModelTest.BetaZeroNormal (0 ms)
+[----------] 1 test from SABRModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"SABRModelTest.BetaZeroNormal" end time: Feb 04 20:27 Eastern Standard Time
+"SABRModelTest.BetaZeroNormal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/90 Testing: SABRModelTest.BetaOneLogNormal
+52/90 Test: SABRModelTest.BetaOneLogNormal
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=SABRModelTest.BetaOneLogNormal" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"SABRModelTest.BetaOneLogNormal" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SABRModelTest.BetaOneLogNormal
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SABRModelTest
+[ RUN      ] SABRModelTest.BetaOneLogNormal
+[       OK ] SABRModelTest.BetaOneLogNormal (0 ms)
+[----------] 1 test from SABRModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"SABRModelTest.BetaOneLogNormal" end time: Feb 04 20:27 Eastern Standard Time
+"SABRModelTest.BetaOneLogNormal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/90 Testing: SABRModelTest.PriceConsistency
+53/90 Test: SABRModelTest.PriceConsistency
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=SABRModelTest.PriceConsistency" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"SABRModelTest.PriceConsistency" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SABRModelTest.PriceConsistency
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SABRModelTest
+[ RUN      ] SABRModelTest.PriceConsistency
+[       OK ] SABRModelTest.PriceConsistency (0 ms)
+[----------] 1 test from SABRModelTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"SABRModelTest.PriceConsistency" end time: Feb 04 20:27 Eastern Standard Time
+"SABRModelTest.PriceConsistency" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/90 Testing: AmericanOptionTest.AmericanCallEqualsEuropean
+54/90 Test: AmericanOptionTest.AmericanCallEqualsEuropean
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.AmericanCallEqualsEuropean" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.AmericanCallEqualsEuropean" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.AmericanCallEqualsEuropean
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.AmericanCallEqualsEuropean
+[       OK ] AmericanOptionTest.AmericanCallEqualsEuropean (1 ms)
+[----------] 1 test from AmericanOptionTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.AmericanCallEqualsEuropean" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.AmericanCallEqualsEuropean" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/90 Testing: AmericanOptionTest.AmericanPutPremium
+55/90 Test: AmericanOptionTest.AmericanPutPremium
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.AmericanPutPremium" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.AmericanPutPremium" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.AmericanPutPremium
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.AmericanPutPremium
+[       OK ] AmericanOptionTest.AmericanPutPremium (1 ms)
+[----------] 1 test from AmericanOptionTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.AmericanPutPremium" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.AmericanPutPremium" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/90 Testing: AmericanOptionTest.EarlyExercisePremium
+56/90 Test: AmericanOptionTest.EarlyExercisePremium
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.EarlyExercisePremium" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.EarlyExercisePremium" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.EarlyExercisePremium
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.EarlyExercisePremium
+[       OK ] AmericanOptionTest.EarlyExercisePremium (0 ms)
+[----------] 1 test from AmericanOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.EarlyExercisePremium" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.EarlyExercisePremium" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/90 Testing: AmericanOptionTest.TrinomialConvergence
+57/90 Test: AmericanOptionTest.TrinomialConvergence
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.TrinomialConvergence" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.TrinomialConvergence" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.TrinomialConvergence
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.TrinomialConvergence
+[       OK ] AmericanOptionTest.TrinomialConvergence (0 ms)
+[----------] 1 test from AmericanOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.TrinomialConvergence" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.TrinomialConvergence" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/90 Testing: AmericanOptionTest.RichardsonExtrapolation
+58/90 Test: AmericanOptionTest.RichardsonExtrapolation
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.RichardsonExtrapolation" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.RichardsonExtrapolation" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.RichardsonExtrapolation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.RichardsonExtrapolation
+[       OK ] AmericanOptionTest.RichardsonExtrapolation (0 ms)
+[----------] 1 test from AmericanOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.RichardsonExtrapolation" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.RichardsonExtrapolation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/90 Testing: AmericanOptionTest.ExerciseBoundary
+59/90 Test: AmericanOptionTest.ExerciseBoundary
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.ExerciseBoundary" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.ExerciseBoundary" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.ExerciseBoundary
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.ExerciseBoundary
+[       OK ] AmericanOptionTest.ExerciseBoundary (0 ms)
+[----------] 1 test from AmericanOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.ExerciseBoundary" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.ExerciseBoundary" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/90 Testing: AmericanOptionTest.DeepITMPutExercise
+60/90 Test: AmericanOptionTest.DeepITMPutExercise
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AmericanOptionTest.DeepITMPutExercise" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AmericanOptionTest.DeepITMPutExercise" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AmericanOptionTest.DeepITMPutExercise
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AmericanOptionTest
+[ RUN      ] AmericanOptionTest.DeepITMPutExercise
+[       OK ] AmericanOptionTest.DeepITMPutExercise (1 ms)
+[----------] 1 test from AmericanOptionTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"AmericanOptionTest.DeepITMPutExercise" end time: Feb 04 20:27 Eastern Standard Time
+"AmericanOptionTest.DeepITMPutExercise" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/90 Testing: LSMTest.ConvergesToBinomial
+61/90 Test: LSMTest.ConvergesToBinomial
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=LSMTest.ConvergesToBinomial" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"LSMTest.ConvergesToBinomial" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = LSMTest.ConvergesToBinomial
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LSMTest
+[ RUN      ] LSMTest.ConvergesToBinomial
+[       OK ] LSMTest.ConvergesToBinomial (326 ms)
+[----------] 1 test from LSMTest (326 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (326 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.34 sec
+----------------------------------------------------------
+Test Passed.
+"LSMTest.ConvergesToBinomial" end time: Feb 04 20:27 Eastern Standard Time
+"LSMTest.ConvergesToBinomial" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/90 Testing: LSMTest.StandardErrorDecreases
+62/90 Test: LSMTest.StandardErrorDecreases
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=LSMTest.StandardErrorDecreases" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"LSMTest.StandardErrorDecreases" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = LSMTest.StandardErrorDecreases
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LSMTest
+[ RUN      ] LSMTest.StandardErrorDecreases
+[       OK ] LSMTest.StandardErrorDecreases (906 ms)
+[----------] 1 test from LSMTest (906 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (906 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.92 sec
+----------------------------------------------------------
+Test Passed.
+"LSMTest.StandardErrorDecreases" end time: Feb 04 20:27 Eastern Standard Time
+"LSMTest.StandardErrorDecreases" time elapsed: 00:00:00
+----------------------------------------------------------
+
+63/90 Testing: LSMTest.AntitheticVariance
+63/90 Test: LSMTest.AntitheticVariance
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=LSMTest.AntitheticVariance" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"LSMTest.AntitheticVariance" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = LSMTest.AntitheticVariance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LSMTest
+[ RUN      ] LSMTest.AntitheticVariance
+[       OK ] LSMTest.AntitheticVariance (650 ms)
+[----------] 1 test from LSMTest (651 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (651 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.66 sec
+----------------------------------------------------------
+Test Passed.
+"LSMTest.AntitheticVariance" end time: Feb 04 20:27 Eastern Standard Time
+"LSMTest.AntitheticVariance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+64/90 Testing: LSMTest.HestonPricing
+64/90 Test: LSMTest.HestonPricing
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=LSMTest.HestonPricing" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"LSMTest.HestonPricing" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = LSMTest.HestonPricing
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LSMTest
+[ RUN      ] LSMTest.HestonPricing
+[       OK ] LSMTest.HestonPricing (371 ms)
+[----------] 1 test from LSMTest (371 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (371 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.39 sec
+----------------------------------------------------------
+Test Passed.
+"LSMTest.HestonPricing" end time: Feb 04 20:27 Eastern Standard Time
+"LSMTest.HestonPricing" time elapsed: 00:00:00
+----------------------------------------------------------
+
+65/90 Testing: LSMTest.BermudanOption
+65/90 Test: LSMTest.BermudanOption
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=LSMTest.BermudanOption" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"LSMTest.BermudanOption" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = LSMTest.BermudanOption
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LSMTest
+[ RUN      ] LSMTest.BermudanOption
+[       OK ] LSMTest.BermudanOption (370 ms)
+[----------] 1 test from LSMTest (370 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (371 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.38 sec
+----------------------------------------------------------
+Test Passed.
+"LSMTest.BermudanOption" end time: Feb 04 20:27 Eastern Standard Time
+"LSMTest.BermudanOption" time elapsed: 00:00:00
+----------------------------------------------------------
+
+66/90 Testing: BarrierOptionTest.DownAndOutCallVanilla
+66/90 Test: BarrierOptionTest.DownAndOutCallVanilla
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BarrierOptionTest.DownAndOutCallVanilla" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BarrierOptionTest.DownAndOutCallVanilla" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BarrierOptionTest.DownAndOutCallVanilla
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BarrierOptionTest
+[ RUN      ] BarrierOptionTest.DownAndOutCallVanilla
+[       OK ] BarrierOptionTest.DownAndOutCallVanilla (0 ms)
+[----------] 1 test from BarrierOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BarrierOptionTest.DownAndOutCallVanilla" end time: Feb 04 20:27 Eastern Standard Time
+"BarrierOptionTest.DownAndOutCallVanilla" time elapsed: 00:00:00
+----------------------------------------------------------
+
+67/90 Testing: BarrierOptionTest.InOutParity
+67/90 Test: BarrierOptionTest.InOutParity
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BarrierOptionTest.InOutParity" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BarrierOptionTest.InOutParity" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BarrierOptionTest.InOutParity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BarrierOptionTest
+[ RUN      ] BarrierOptionTest.InOutParity
+[       OK ] BarrierOptionTest.InOutParity (0 ms)
+[----------] 1 test from BarrierOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BarrierOptionTest.InOutParity" end time: Feb 04 20:27 Eastern Standard Time
+"BarrierOptionTest.InOutParity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+68/90 Testing: BarrierOptionTest.KnockedOutWorthless
+68/90 Test: BarrierOptionTest.KnockedOutWorthless
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BarrierOptionTest.KnockedOutWorthless" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BarrierOptionTest.KnockedOutWorthless" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BarrierOptionTest.KnockedOutWorthless
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BarrierOptionTest
+[ RUN      ] BarrierOptionTest.KnockedOutWorthless
+[       OK ] BarrierOptionTest.KnockedOutWorthless (0 ms)
+[----------] 1 test from BarrierOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"BarrierOptionTest.KnockedOutWorthless" end time: Feb 04 20:27 Eastern Standard Time
+"BarrierOptionTest.KnockedOutWorthless" time elapsed: 00:00:00
+----------------------------------------------------------
+
+69/90 Testing: BarrierOptionTest.MonteCarloConvergence
+69/90 Test: BarrierOptionTest.MonteCarloConvergence
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=BarrierOptionTest.MonteCarloConvergence" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"BarrierOptionTest.MonteCarloConvergence" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = BarrierOptionTest.MonteCarloConvergence
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BarrierOptionTest
+[ RUN      ] BarrierOptionTest.MonteCarloConvergence
+C:/Users/pooja/Arbor/cpp/tests/options_test.cpp:547: Failure
+The difference between mc.price and analytical.price is 7.5425952912289986, which exceeds 0.5, where
+mc.price evaluates to 11.971917798212321,
+analytical.price evaluates to 4.429322506983322, and
+0.5 evaluates to 0.5.
+
+[  FAILED  ] BarrierOptionTest.MonteCarloConvergence (775 ms)
+[----------] 1 test from BarrierOptionTest (775 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (776 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] BarrierOptionTest.MonteCarloConvergence
+
+ 1 FAILED TEST
+<end of output>
+Test time =   0.79 sec
+----------------------------------------------------------
+Test Failed.
+"BarrierOptionTest.MonteCarloConvergence" end time: Feb 04 20:27 Eastern Standard Time
+"BarrierOptionTest.MonteCarloConvergence" time elapsed: 00:00:00
+----------------------------------------------------------
+
+70/90 Testing: AsianOptionTest.GeometricClosedForm
+70/90 Test: AsianOptionTest.GeometricClosedForm
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AsianOptionTest.GeometricClosedForm" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AsianOptionTest.GeometricClosedForm" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AsianOptionTest.GeometricClosedForm
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AsianOptionTest
+[ RUN      ] AsianOptionTest.GeometricClosedForm
+[       OK ] AsianOptionTest.GeometricClosedForm (0 ms)
+[----------] 1 test from AsianOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"AsianOptionTest.GeometricClosedForm" end time: Feb 04 20:27 Eastern Standard Time
+"AsianOptionTest.GeometricClosedForm" time elapsed: 00:00:00
+----------------------------------------------------------
+
+71/90 Testing: AsianOptionTest.ArithmeticMonteCarlo
+71/90 Test: AsianOptionTest.ArithmeticMonteCarlo
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AsianOptionTest.ArithmeticMonteCarlo" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AsianOptionTest.ArithmeticMonteCarlo" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AsianOptionTest.ArithmeticMonteCarlo
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AsianOptionTest
+[ RUN      ] AsianOptionTest.ArithmeticMonteCarlo
+[       OK ] AsianOptionTest.ArithmeticMonteCarlo (57 ms)
+[----------] 1 test from AsianOptionTest (57 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (57 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"AsianOptionTest.ArithmeticMonteCarlo" end time: Feb 04 20:27 Eastern Standard Time
+"AsianOptionTest.ArithmeticMonteCarlo" time elapsed: 00:00:00
+----------------------------------------------------------
+
+72/90 Testing: AsianOptionTest.TurnbullWakeman
+72/90 Test: AsianOptionTest.TurnbullWakeman
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AsianOptionTest.TurnbullWakeman" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AsianOptionTest.TurnbullWakeman" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AsianOptionTest.TurnbullWakeman
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AsianOptionTest
+[ RUN      ] AsianOptionTest.TurnbullWakeman
+[       OK ] AsianOptionTest.TurnbullWakeman (0 ms)
+[----------] 1 test from AsianOptionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"AsianOptionTest.TurnbullWakeman" end time: Feb 04 20:27 Eastern Standard Time
+"AsianOptionTest.TurnbullWakeman" time elapsed: 00:00:00
+----------------------------------------------------------
+
+73/90 Testing: AsianOptionTest.AsianCheaperThanVanilla
+73/90 Test: AsianOptionTest.AsianCheaperThanVanilla
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=AsianOptionTest.AsianCheaperThanVanilla" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"AsianOptionTest.AsianCheaperThanVanilla" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = AsianOptionTest.AsianCheaperThanVanilla
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AsianOptionTest
+[ RUN      ] AsianOptionTest.AsianCheaperThanVanilla
+[       OK ] AsianOptionTest.AsianCheaperThanVanilla (55 ms)
+[----------] 1 test from AsianOptionTest (55 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (56 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"AsianOptionTest.AsianCheaperThanVanilla" end time: Feb 04 20:27 Eastern Standard Time
+"AsianOptionTest.AsianCheaperThanVanilla" time elapsed: 00:00:00
+----------------------------------------------------------
+
+74/90 Testing: MonteCarloTest.ConvergesToBlackScholes
+74/90 Test: MonteCarloTest.ConvergesToBlackScholes
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MonteCarloTest.ConvergesToBlackScholes" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.ConvergesToBlackScholes" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.ConvergesToBlackScholes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.ConvergesToBlackScholes
+[       OK ] MonteCarloTest.ConvergesToBlackScholes (20 ms)
+[----------] 1 test from MonteCarloTest (20 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (20 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.ConvergesToBlackScholes" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.ConvergesToBlackScholes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+75/90 Testing: MonteCarloTest.AntitheticReducesVariance
+75/90 Test: MonteCarloTest.AntitheticReducesVariance
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MonteCarloTest.AntitheticReducesVariance" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.AntitheticReducesVariance" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.AntitheticReducesVariance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.AntitheticReducesVariance
+[       OK ] MonteCarloTest.AntitheticReducesVariance (11 ms)
+[----------] 1 test from MonteCarloTest (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (11 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.AntitheticReducesVariance" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.AntitheticReducesVariance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+76/90 Testing: MonteCarloTest.HestonMonteCarlo
+76/90 Test: MonteCarloTest.HestonMonteCarlo
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MonteCarloTest.HestonMonteCarlo" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.HestonMonteCarlo" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.HestonMonteCarlo
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.HestonMonteCarlo
+C:/Users/pooja/Arbor/cpp/tests/options_test.cpp:632: Failure
+The difference between mc.price and analytical.price is 7.7707642275458344, which exceeds 1.0, where
+mc.price evaluates to 2.6170358952341313,
+analytical.price evaluates to 10.387800122779966, and
+1.0 evaluates to 1.
+
+[  FAILED  ] MonteCarloTest.HestonMonteCarlo (1882 ms)
+[----------] 1 test from MonteCarloTest (1882 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1882 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] MonteCarloTest.HestonMonteCarlo
+
+ 1 FAILED TEST
+<end of output>
+Test time =   1.90 sec
+----------------------------------------------------------
+Test Failed.
+"MonteCarloTest.HestonMonteCarlo" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.HestonMonteCarlo" time elapsed: 00:00:01
+----------------------------------------------------------
+
+77/90 Testing: MonteCarloTest.JumpDiffusionMonteCarlo
+77/90 Test: MonteCarloTest.JumpDiffusionMonteCarlo
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MonteCarloTest.JumpDiffusionMonteCarlo" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.JumpDiffusionMonteCarlo" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.JumpDiffusionMonteCarlo
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.JumpDiffusionMonteCarlo
+[       OK ] MonteCarloTest.JumpDiffusionMonteCarlo (1086 ms)
+[----------] 1 test from MonteCarloTest (1087 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1087 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   1.11 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.JumpDiffusionMonteCarlo" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.JumpDiffusionMonteCarlo" time elapsed: 00:00:01
+----------------------------------------------------------
+
+78/90 Testing: MonteCarloTest.SIMDConsistency
+78/90 Test: MonteCarloTest.SIMDConsistency
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=MonteCarloTest.SIMDConsistency" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.SIMDConsistency" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.SIMDConsistency
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.SIMDConsistency
+[       OK ] MonteCarloTest.SIMDConsistency (7 ms)
+[----------] 1 test from MonteCarloTest (7 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (7 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.SIMDConsistency" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.SIMDConsistency" time elapsed: 00:00:00
+----------------------------------------------------------
+
+79/90 Testing: PerformanceTest.BlackScholesSubMicrosecond
+79/90 Test: PerformanceTest.BlackScholesSubMicrosecond
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=PerformanceTest.BlackScholesSubMicrosecond" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"PerformanceTest.BlackScholesSubMicrosecond" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PerformanceTest.BlackScholesSubMicrosecond
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PerformanceTest
+[ RUN      ] PerformanceTest.BlackScholesSubMicrosecond
+[       OK ] PerformanceTest.BlackScholesSubMicrosecond (21 ms)
+[----------] 1 test from PerformanceTest (22 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (22 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PerformanceTest.BlackScholesSubMicrosecond" end time: Feb 04 20:27 Eastern Standard Time
+"PerformanceTest.BlackScholesSubMicrosecond" time elapsed: 00:00:00
+----------------------------------------------------------
+
+80/90 Testing: PerformanceTest.ImpliedVolatilityPerformance
+80/90 Test: PerformanceTest.ImpliedVolatilityPerformance
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=PerformanceTest.ImpliedVolatilityPerformance" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"PerformanceTest.ImpliedVolatilityPerformance" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PerformanceTest.ImpliedVolatilityPerformance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PerformanceTest
+[ RUN      ] PerformanceTest.ImpliedVolatilityPerformance
+[       OK ] PerformanceTest.ImpliedVolatilityPerformance (8 ms)
+[----------] 1 test from PerformanceTest (8 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (8 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"PerformanceTest.ImpliedVolatilityPerformance" end time: Feb 04 20:27 Eastern Standard Time
+"PerformanceTest.ImpliedVolatilityPerformance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+81/90 Testing: StabilityTest.ExtremeDTM
+81/90 Test: StabilityTest.ExtremeDTM
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=StabilityTest.ExtremeDTM" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"StabilityTest.ExtremeDTM" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = StabilityTest.ExtremeDTM
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StabilityTest
+[ RUN      ] StabilityTest.ExtremeDTM
+[       OK ] StabilityTest.ExtremeDTM (0 ms)
+[----------] 1 test from StabilityTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"StabilityTest.ExtremeDTM" end time: Feb 04 20:27 Eastern Standard Time
+"StabilityTest.ExtremeDTM" time elapsed: 00:00:00
+----------------------------------------------------------
+
+82/90 Testing: StabilityTest.HighVolatility
+82/90 Test: StabilityTest.HighVolatility
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=StabilityTest.HighVolatility" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"StabilityTest.HighVolatility" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = StabilityTest.HighVolatility
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StabilityTest
+[ RUN      ] StabilityTest.HighVolatility
+[       OK ] StabilityTest.HighVolatility (0 ms)
+[----------] 1 test from StabilityTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"StabilityTest.HighVolatility" end time: Feb 04 20:27 Eastern Standard Time
+"StabilityTest.HighVolatility" time elapsed: 00:00:00
+----------------------------------------------------------
+
+83/90 Testing: StabilityTest.DeepOTM
+83/90 Test: StabilityTest.DeepOTM
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=StabilityTest.DeepOTM" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"StabilityTest.DeepOTM" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = StabilityTest.DeepOTM
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StabilityTest
+[ RUN      ] StabilityTest.DeepOTM
+[       OK ] StabilityTest.DeepOTM (0 ms)
+[----------] 1 test from StabilityTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"StabilityTest.DeepOTM" end time: Feb 04 20:27 Eastern Standard Time
+"StabilityTest.DeepOTM" time elapsed: 00:00:00
+----------------------------------------------------------
+
+84/90 Testing: StabilityTest.ZeroVolatility
+84/90 Test: StabilityTest.ZeroVolatility
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/options_test.exe" "--gtest_filter=StabilityTest.ZeroVolatility" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"StabilityTest.ZeroVolatility" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = StabilityTest.ZeroVolatility
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StabilityTest
+[ RUN      ] StabilityTest.ZeroVolatility
+[       OK ] StabilityTest.ZeroVolatility (0 ms)
+[----------] 1 test from StabilityTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"StabilityTest.ZeroVolatility" end time: Feb 04 20:27 Eastern Standard Time
+"StabilityTest.ZeroVolatility" time elapsed: 00:00:00
+----------------------------------------------------------
+
+85/90 Testing: MonteCarloTest.BasicSimulation
+85/90 Test: MonteCarloTest.BasicSimulation
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/montecarlo_test.exe" "--gtest_filter=MonteCarloTest.BasicSimulation" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.BasicSimulation" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.BasicSimulation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.BasicSimulation
+[       OK ] MonteCarloTest.BasicSimulation (9 ms)
+[----------] 1 test from MonteCarloTest (9 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (9 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.BasicSimulation" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.BasicSimulation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+86/90 Testing: MonteCarloTest.ExpectedReturn
+86/90 Test: MonteCarloTest.ExpectedReturn
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/montecarlo_test.exe" "--gtest_filter=MonteCarloTest.ExpectedReturn" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.ExpectedReturn" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.ExpectedReturn
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.ExpectedReturn
+[       OK ] MonteCarloTest.ExpectedReturn (35 ms)
+[----------] 1 test from MonteCarloTest (35 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (35 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.ExpectedReturn" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.ExpectedReturn" time elapsed: 00:00:00
+----------------------------------------------------------
+
+87/90 Testing: MonteCarloTest.VaRCalculation
+87/90 Test: MonteCarloTest.VaRCalculation
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/montecarlo_test.exe" "--gtest_filter=MonteCarloTest.VaRCalculation" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.VaRCalculation" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.VaRCalculation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.VaRCalculation
+[       OK ] MonteCarloTest.VaRCalculation (0 ms)
+[----------] 1 test from MonteCarloTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.VaRCalculation" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.VaRCalculation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+88/90 Testing: MonteCarloTest.MultiThreading
+88/90 Test: MonteCarloTest.MultiThreading
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/montecarlo_test.exe" "--gtest_filter=MonteCarloTest.MultiThreading" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.MultiThreading" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.MultiThreading
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.MultiThreading
+[       OK ] MonteCarloTest.MultiThreading (104 ms)
+[----------] 1 test from MonteCarloTest (104 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (104 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.MultiThreading" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.MultiThreading" time elapsed: 00:00:00
+----------------------------------------------------------
+
+89/90 Testing: MonteCarloTest.CorrelationMatrix
+89/90 Test: MonteCarloTest.CorrelationMatrix
+Command: "C:/Users/pooja/Arbor/cpp/build/tests/montecarlo_test.exe" "--gtest_filter=MonteCarloTest.CorrelationMatrix" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/pooja/Arbor/cpp/build/tests
+"MonteCarloTest.CorrelationMatrix" start time: Feb 04 20:27 Eastern Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = MonteCarloTest.CorrelationMatrix
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MonteCarloTest
+[ RUN      ] MonteCarloTest.CorrelationMatrix
+[       OK ] MonteCarloTest.CorrelationMatrix (0 ms)
+[----------] 1 test from MonteCarloTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTest.CorrelationMatrix" end time: Feb 04 20:27 Eastern Standard Time
+"MonteCarloTest.CorrelationMatrix" time elapsed: 00:00:00
+----------------------------------------------------------
+

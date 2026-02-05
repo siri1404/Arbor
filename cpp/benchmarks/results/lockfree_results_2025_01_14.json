@@ -1,0 +1,49 @@
+{
+  "benchmark_info": {
+    "name": "Arbor Lock-Free Data Structures Benchmark",
+    "version": "2.0",
+    "timestamp": "2025-01-14T10:40:00Z",
+    "build_type": "Release",
+    "compiler": "GCC 14.2.0",
+    "flags": "-O3 -march=native -mavx2 -mfma -DNDEBUG",
+    "hardware": {
+      "cpu_threads": 16,
+      "cache_line_size_bytes": 64,
+      "message_size_bytes": 64,
+      "queue_capacity_slots": 16384
+    }
+  },
+  "spsc_queue": {
+    "single_item_operations": {
+      "samples": 10000000,
+      "throughput_mops": 15.34,
+      "latency_ns": {
+        "mean": 950870.7,
+        "stddev": 387702.2,
+        "min": 100,
+        "p50": 1075700,
+        "p90": 1195300,
+        "p99": 2437200,
+        "p99_9": 3561700,
+        "p99_99": 3660900,
+        "max": 3687900
+      },
+      "guarantee": "Wait-free O(1) bounded time per operation"
+    },
+    "batch_operations": {
+      "batch_size": 64,
+      "total_messages_millions": 10.0,
+      "duration_sec": 0.61,
+      "throughput_mops": 16.28,
+      "note": "Amortized memory barrier overhead"
+    }
+  },
+  "test_results": {
+    "spsc_basic_operations": "PASS",
+    "spsc_full_queue_behavior": "PASS",
+    "spsc_concurrent_correctness": "PASS",
+    "spsc_batch_operations": "PASS",
+    "mpsc_basic_operations": "PASS",
+    "mpsc_concurrent_correctness": "PASS"
+  }
+}

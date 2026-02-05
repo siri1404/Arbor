@@ -1,0 +1,88 @@
+{
+  "benchmark_info": {
+    "name": "Arbor Monte Carlo Engine Benchmark",
+    "version": "2.0",
+    "timestamp": "2025-01-14T10:35:00Z",
+    "build_type": "Release",
+    "compiler": "GCC 14.2.0",
+    "flags": "-O3 -march=native -mavx2 -mfma -DNDEBUG",
+    "hardware": {
+      "cpu_threads": 16,
+      "simd": "AVX2 + FMA"
+    }
+  },
+  "gbm_simulation": {
+    "parameters": {
+      "initial_price": 150.0,
+      "expected_return": 0.10,
+      "volatility": 0.25,
+      "time_horizon_years": 1.0,
+      "num_paths": 10000,
+      "steps_per_path": 252,
+      "total_simulations": 2520000
+    },
+    "performance": {
+      "total_time_ms": 34.67,
+      "paths_per_second": 288475,
+      "simulations_per_second": 72695593,
+      "time_per_path_us": 3.47
+    },
+    "statistics": {
+      "mean_final_price": 165.81,
+      "std_deviation": 41.24,
+      "min_final_price": 70.43,
+      "max_final_price": 414.97,
+      "median_final_price": 161.35,
+      "expected_return_pct": 10.54,
+      "realized_volatility_pct": 27.49,
+      "sharpe_ratio": 0.38,
+      "skewness": 0.68,
+      "kurtosis": 0.70
+    },
+    "risk_metrics": {
+      "var_95_pct": 43.03,
+      "var_99_pct": 59.71,
+      "cvar_95_pct": 52.88,
+      "cvar_99_pct": 65.03
+    }
+  },
+  "large_scale_simulation": {
+    "num_paths": 100000,
+    "total_data_points": 25200000,
+    "total_time_seconds": 0.10,
+    "paths_per_second": 956658,
+    "mean_final_price": 165.75,
+    "sharpe_ratio": 0.37,
+    "var_99_pct": 60.26
+  },
+  "multi_threading_scalability": {
+    "test_paths": 50000,
+    "results": [
+      {
+        "threads": 1,
+        "time_ms": 379.1,
+        "paths_per_sec": 131887,
+        "speedup": 1.0
+      },
+      {
+        "threads": 2,
+        "time_ms": 199.6,
+        "paths_per_sec": 250509,
+        "speedup": 1.90
+      },
+      {
+        "threads": 4,
+        "time_ms": 120.3,
+        "paths_per_sec": 415674,
+        "speedup": 3.15
+      },
+      {
+        "threads": 16,
+        "time_ms": 62.9,
+        "paths_per_sec": 794459,
+        "speedup": 6.02
+      }
+    ],
+    "scaling_conclusion": "Near-linear scaling up to 4 threads, 6x speedup at 16 threads"
+  }
+}

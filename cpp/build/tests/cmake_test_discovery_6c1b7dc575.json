@@ -1,35 +1,355 @@
 {
-  "tests": 5,
+  "tests": 57,
   "name": "AllTests",
   "testsuites": [
     {
       "name": "BlackScholesTest",
-      "tests": 5,
+      "tests": 10,
       "testsuite": [
         {
           "name": "ATMCallPrice",
-          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
-          "line": 7
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 23
+        },
+        {
+          "name": "ATMPutPrice",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 36
         },
         {
           "name": "PutCallParity",
-          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
-          "line": 32
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 50
         },
         {
-          "name": "ImpliedVolatility",
-          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
-          "line": 44
+          "name": "DeepITMCall",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 60
         },
         {
-          "name": "IntrinsicValue",
-          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
-          "line": 59
+          "name": "DeepOTMCall",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 68
         },
         {
-          "name": "Performance",
-          "file": "C:\/Users\/pooja\/Downloads\/market-prophet-ai-platform\/cpp\/tests\/options_test.cpp",
-          "line": 70
+          "name": "HigherOrderGreeks",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 76
+        },
+        {
+          "name": "ImpliedVolatilityRoundtrip",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 90
+        },
+        {
+          "name": "ImpliedVolatilityOTM",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 101
+        },
+        {
+          "name": "ExpiredOption",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 113
+        },
+        {
+          "name": "OptionChain",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "name": "MertonJumpDiffusionTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "ConvergesToBSWhenNoJumps",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 160
+        },
+        {
+          "name": "JumpsPriceOTMOptionsHigher",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 169
+        },
+        {
+          "name": "PutCallParityHolds",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 177
+        },
+        {
+          "name": "GreeksFiniteDifference",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 188
+        },
+        {
+          "name": "SeriesConvergence",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 202
+        }
+      ]
+    },
+    {
+      "name": "HestonModelTest",
+      "tests": 6,
+      "testsuite": [
+        {
+          "name": "FellerCondition",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 230
+        },
+        {
+          "name": "ConvergesToBSWhenNoVolOfVol",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 238
+        },
+        {
+          "name": "NegativeCorrelationSkew",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 248
+        },
+        {
+          "name": "CharacteristicFunctionNormalized",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 258
+        },
+        {
+          "name": "PutCallParity",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 267
+        },
+        {
+          "name": "GreeksComputation",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 277
+        }
+      ]
+    },
+    {
+      "name": "SABRModelTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "ATMVolApproximation",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 303
+        },
+        {
+          "name": "VolSmileShape",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 311
+        },
+        {
+          "name": "BetaZeroNormal",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 326
+        },
+        {
+          "name": "BetaOneLogNormal",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 334
+        },
+        {
+          "name": "PriceConsistency",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 342
+        }
+      ]
+    },
+    {
+      "name": "AmericanOptionTest",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "AmericanCallEqualsEuropean",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 364
+        },
+        {
+          "name": "AmericanPutPremium",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 372
+        },
+        {
+          "name": "EarlyExercisePremium",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 380
+        },
+        {
+          "name": "TrinomialConvergence",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 386
+        },
+        {
+          "name": "RichardsonExtrapolation",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 394
+        },
+        {
+          "name": "ExerciseBoundary",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 406
+        },
+        {
+          "name": "DeepITMPutExercise",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 416
+        }
+      ]
+    },
+    {
+      "name": "LSMTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "ConvergesToBinomial",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 440
+        },
+        {
+          "name": "StandardErrorDecreases",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 448
+        },
+        {
+          "name": "AntitheticVariance",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 459
+        },
+        {
+          "name": "HestonPricing",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 471
+        },
+        {
+          "name": "BermudanOption",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 480
+        }
+      ]
+    },
+    {
+      "name": "BarrierOptionTest",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "DownAndOutCallVanilla",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 508
+        },
+        {
+          "name": "InOutParity",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 519
+        },
+        {
+          "name": "KnockedOutWorthless",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 531
+        },
+        {
+          "name": "MonteCarloConvergence",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 540
+        }
+      ]
+    },
+    {
+      "name": "AsianOptionTest",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "GeometricClosedForm",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 565
+        },
+        {
+          "name": "ArithmeticMonteCarlo",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 576
+        },
+        {
+          "name": "TurnbullWakeman",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 584
+        },
+        {
+          "name": "AsianCheaperThanVanilla",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 590
+        }
+      ]
+    },
+    {
+      "name": "MonteCarloTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "ConvergesToBlackScholes",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 611
+        },
+        {
+          "name": "AntitheticReducesVariance",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 618
+        },
+        {
+          "name": "HestonMonteCarlo",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 626
+        },
+        {
+          "name": "JumpDiffusionMonteCarlo",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 635
+        },
+        {
+          "name": "SIMDConsistency",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 645
+        }
+      ]
+    },
+    {
+      "name": "PerformanceTest",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "BlackScholesSubMicrosecond",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 658
+        },
+        {
+          "name": "ImpliedVolatilityPerformance",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 674
+        }
+      ]
+    },
+    {
+      "name": "StabilityTest",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "ExtremeDTM",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 698
+        },
+        {
+          "name": "HighVolatility",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 707
+        },
+        {
+          "name": "DeepOTM",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 715
+        },
+        {
+          "name": "ZeroVolatility",
+          "file": "C:\/Users\/pooja\/Arbor\/cpp\/tests\/options_test.cpp",
+          "line": 726
         }
       ]
     }
