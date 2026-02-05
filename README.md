@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🌳 Arbor</h1>
+  <h1>Arbor</h1>
 </div>
 
 <div align="center">
@@ -15,6 +15,18 @@
 </div>
 
 Full-stack trading infrastructure with a high-performance C++ engine and Next.js dashboard. Features sub-microsecond order matching (398ns), Black-Scholes options pricing (59ns), and multi-threaded Monte Carlo simulation. Designed for quantitative traders who need production-grade performance with complete source code access.
+
+## Dashboard
+
+<div align="center">
+  <img src="public/images/Dashboard1.png" alt="Arbor Dashboard - Main View" width="45%" />
+  <img src="public/images/Dashboard2.png" alt="Arbor Dashboard - Analytics" width="45%" />
+</div>
+
+<div align="center">
+  <img src="public/images/Dashboard3.png" alt="Arbor Dashboard - Portfolio" width="45%" />
+  <img src="public/images/Dashboard4.png" alt="Arbor Dashboard - Trading View" width="45%" />
+</div>
 
 **What's included:**
 
