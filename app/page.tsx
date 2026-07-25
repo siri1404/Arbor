@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import { DashboardWrapper } from '@/components/dashboard-wrapper'
 
-export default async function HomePage() {
-  redirect('/dashboard')
+export default function HomePage() {
+  return <DashboardWrapper />
 }
